@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -13,6 +13,11 @@ import {
 } from "mdbreact";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const onSubmit = (e) => console.log(email, password);
   return (
     <MDBContainer>
       <MDBRow>
@@ -27,6 +32,7 @@ const LoginPage = () => {
               <form>
                 <div className="grey-text">
                   <MDBInput
+                    onChange={handleEmailChange}
                     label="Type your email"
                     icon="envelope"
                     group
@@ -36,6 +42,7 @@ const LoginPage = () => {
                     success="right"
                   />
                   <MDBInput
+                    onChange={handlePasswordChange}
                     label="Type your password"
                     icon="lock"
                     group
@@ -45,7 +52,12 @@ const LoginPage = () => {
                 </div>
 
                 <div className="text-center mt-4">
-                  <MDBBtn color="light-blue" className="mb-3" type="submit">
+                  <MDBBtn
+                    onClick={onSubmit}
+                    color="light-blue"
+                    className="mb-3"
+                    type="submit"
+                  >
                     Login
                   </MDBBtn>
                 </div>
