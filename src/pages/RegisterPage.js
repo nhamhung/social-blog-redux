@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from "mdbreact";
-
+import { useDispatch } from "react-redux";
+import registerActions from "../redux/actions/register.actions";
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleNameChange = (e) => setName(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(registerActions.registerRequest(name, email, password));
+  };
   return (
     <MDBContainer>
       <MDBRow>
@@ -10,6 +22,7 @@ const RegisterPage = () => {
             <p className="h5 text-center mb-4">Sign up</p>
             <div className="grey-text">
               <MDBInput
+                onChange={handleNameChange}
                 label="Your name"
                 icon="user"
                 group
@@ -19,6 +32,7 @@ const RegisterPage = () => {
                 success="right"
               />
               <MDBInput
+                onChange={handleEmailChange}
                 label="Your email"
                 icon="envelope"
                 group
@@ -37,6 +51,7 @@ const RegisterPage = () => {
                 success="right"
               />
               <MDBInput
+                onChange={handlePasswordChange}
                 label="Your password"
                 icon="lock"
                 group
@@ -45,7 +60,9 @@ const RegisterPage = () => {
               />
             </div>
             <div className="text-center">
-              <MDBBtn color="primary">Register</MDBBtn>
+              <MDBBtn onClick={handleSubmit} color="primary">
+                Register
+              </MDBBtn>
             </div>
           </form>
         </MDBCol>

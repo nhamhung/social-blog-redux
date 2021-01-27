@@ -11,13 +11,18 @@ import {
   MDBBtn,
   MDBInput,
 } from "mdbreact";
-
+import { useDispatch } from "react-redux";
+import loginActions from "../redux/actions/login.actions";
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const onSubmit = (e) => console.log(email, password);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginActions.loginRequest(email, password));
+  };
   return (
     <MDBContainer>
       <MDBRow>

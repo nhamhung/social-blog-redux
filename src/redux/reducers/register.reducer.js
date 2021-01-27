@@ -1,19 +1,19 @@
-import * as types from "../constants/login.constants";
+import * as types from "../constants/register.constants";
 
 const initialState = { loading: false, error: null };
 
-const loginReducer = (state = initialState, action) => {
+const registerReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case types.LOGIN_REQUEST:
+    case types.REGISTER_REQUEST:
       return { ...state, loading: true };
-    case types.LOGIN_SUCCESS:
+    case types.REGISTER_SUCCESS:
       return { ...state, loading: false };
-    case types.LOGIN_FAILURE:
+    case types.REGISTER_FAILURE:
       return { ...state, loading: false, error: payload };
     default:
       return state;
   }
 };
 
-export default loginReducer;
+export default registerReducer;
