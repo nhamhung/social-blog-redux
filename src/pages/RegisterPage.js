@@ -15,59 +15,61 @@ const RegisterPage = () => {
     dispatch(registerActions.registerRequest(name, email, password));
   };
   return (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <form>
-            <p className="h5 text-center mb-4">Sign up</p>
-            <div className="grey-text">
-              <MDBInput
-                onChange={handleNameChange}
-                label="Your name"
-                icon="user"
-                group
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-              />
-              <MDBInput
-                onChange={handleEmailChange}
-                label="Your email"
-                icon="envelope"
-                group
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-              />
-              <MDBInput
-                label="Confirm your email"
-                icon="exclamation-triangle"
-                group
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-              />
-              <MDBInput
-                onChange={handlePasswordChange}
-                label="Your password"
-                icon="lock"
-                group
-                type="password"
-                validate
-              />
-            </div>
-            <div className="text-center">
-              <MDBBtn onClick={handleSubmit} color="primary">
-                Register
-              </MDBBtn>
-            </div>
-          </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+    <div className="registerPage">
+      <MDBContainer>
+        <MDBRow>
+          <MDBCol md="6 mx-auto">
+            <form>
+              <p className="h5 text-center mb-4">Sign up</p>
+              <div className="grey-text">
+                <MDBInput
+                  onChange={handleNameChange}
+                  label="Your name"
+                  icon="user"
+                  group
+                  type="text"
+                  validate
+                  error="wrong"
+                  success="right"
+                />
+                <MDBInput
+                  onChange={handleEmailChange}
+                  label="Your email"
+                  icon="envelope"
+                  group
+                  type="email"
+                  validate
+                  error="wrong"
+                  success="right"
+                />
+                <MDBInput
+                  label="Confirm your email"
+                  icon="exclamation-triangle"
+                  group
+                  type="text"
+                  validate
+                  error="wrong"
+                  success="right"
+                />
+                <MDBInput
+                  onChange={handlePasswordChange}
+                  label="Your password"
+                  icon="lock"
+                  group
+                  type="password"
+                  validate
+                />
+              </div>
+              <div className="text-center">
+                <MDBBtn onClick={handleSubmit} color="primary">
+                  Register
+                </MDBBtn>
+              </div>
+            </form>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </div>
   );
 };
 
