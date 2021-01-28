@@ -2,8 +2,9 @@ import React from "react";
 
 const UserHomePage = () => {
   return (
-    <div>
+    <div className="userHomePage">
       <p>You're authenticated!</p>
+      <h1>User Home Page</h1>
     </div>
   );
 };
