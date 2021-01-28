@@ -2,7 +2,6 @@ import * as types from "../constants/login.constants";
 import api from "../../apiService";
 
 const loginRequest = (email, password) => async (dispatch) => {
-  console.log("COUCOU");
   dispatch({ type: types.LOGIN_REQUEST });
   api
     .post("/api/auth/login", {
