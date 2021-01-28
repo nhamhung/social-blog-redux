@@ -1,6 +1,10 @@
 import * as types from "../constants/login.constants";
 
-const initialState = { loading: false, error: null, isAuthentificated: false };
+const initialState = {
+  loading: false,
+  error: null,
+  isAuthenticated: localStorage.getItem("token"),
+};
 
 const loginReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -8,7 +12,10 @@ const loginReducer = (state = initialState, action) => {
     case types.LOGIN_REQUEST:
       return { ...state, loading: true };
     case types.LOGIN_SUCCESS:
-      return { ...state, loading: false, isAuthentificated: true };
+      return {
+        ...state,
+        loading: false,
+      };
     case types.LOGIN_FAILURE:
       return { ...state, loading: false, error: payload };
     default:

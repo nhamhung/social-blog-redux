@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -11,10 +11,13 @@ import {
   MDBBtn,
   MDBInput,
 } from "mdbreact";
-import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import loginActions from "../redux/actions/login.actions";
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -23,6 +26,10 @@ const LoginPage = () => {
     e.preventDefault();
     dispatch(loginActions.loginRequest(email, password));
   };
+  useEffect(() => {
+    console.log(isAuthenticated);
+    isAuthenticated ? history.push("/user") : console.log("");
+  }, [isAuthenticated, history]);
   return (
     <MDBContainer>
       <MDBRow>

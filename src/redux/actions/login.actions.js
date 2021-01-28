@@ -9,6 +9,7 @@ const loginRequest = (email, password) => async (dispatch) => {
       password,
     })
     .then(function (response) {
+      //add condition if localStorage, dispatch
       dispatch({ type: types.LOGIN_SUCCESS });
     })
     .catch(function (error) {
