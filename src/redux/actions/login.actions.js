@@ -4,7 +4,7 @@ import api from "../../apiService";
 const loginRequest = (email, password) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   api
-    .post("/api/auth/login", {
+    .post("/auth/login", {
       email,
       password,
     })

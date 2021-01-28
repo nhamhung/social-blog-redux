@@ -4,7 +4,7 @@ import api from "../../apiService";
 const registerRequest = (name, email, password) => async (dispatch) => {
   dispatch({ type: types.REGISTER_REQUEST });
   api
-    .post("/api/users", {
+    .post("/users", {
       name,
       email,
       password,
