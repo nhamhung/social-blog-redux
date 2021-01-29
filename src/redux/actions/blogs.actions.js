@@ -1,7 +1,7 @@
-import * as types from "../constants/getBlogs.constants";
+import * as types from "../constants/blogs.constants";
 import api from "../../apiService";
 
-const getBlogsData = () => async (dispatch) => {
+const BlogsData = () => async (dispatch) => {
   const query = `?page=1&limit=20&sortBy[createdAt]=1`;
   dispatch({ type: types.GET_BLOGS_DATA_REQUEST });
   api
@@ -19,6 +19,6 @@ const getBlogsData = () => async (dispatch) => {
     });
 };
 
-const getBlogsActions = { getBlogsData };
+const BlogsActions = { BlogsData };
 
-export default getBlogsActions;
+export default BlogsActions;

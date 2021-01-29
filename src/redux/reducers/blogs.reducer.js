@@ -1,4 +1,4 @@
-import * as types from "../constants/getBlogs.constants";
+import * as types from "../constants/blogs.constants";
 
 const initialState = {
   blogs: [],
@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const getBlogsReducer = (state = initialState, action) => {
+const BlogsReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case types.GET_BLOGS_DATA_REQUEST:
@@ -20,4 +20,4 @@ const getBlogsReducer = (state = initialState, action) => {
   }
 };
 
-export default getBlogsReducer;
+export default BlogsReducer;
