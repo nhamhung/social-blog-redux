@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from "mdbreact";
 import { useDispatch } from "react-redux";
-import registerActions from "../redux/actions/register.actions";
+import authActions from "../redux/actions/auth.actions";
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerActions.registerRequest(name, email, password));
+    dispatch(authActions.registerRequest(name, email, password));
   };
   return (
     <div className="registerPage">
