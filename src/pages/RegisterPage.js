@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from "mdbreact";
 import { useDispatch } from "react-redux";
-import registerActions from "../redux/actions/register.actions";
+import { useHistory } from "react-router-dom";
+import authActions from "../redux/actions/auth.actions";
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const history = useHistory();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerActions.registerRequest(name, email, password));
+    dispatch(authActions.registerRequest(name, email, password));
+    history.push("/login");
   };
   return (
     <div className="registerPage">
