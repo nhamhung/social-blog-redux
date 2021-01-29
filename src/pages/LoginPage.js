@@ -14,6 +14,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import loginActions from "../redux/actions/login.actions";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
@@ -34,7 +35,7 @@ const LoginPage = () => {
     <div className="loginPage">
       <MDBContainer>
         <MDBRow>
-          <MDBCol md="6">
+          <MDBCol md="6" className="m-auto">
             <MDBCard>
               <MDBCardBody>
                 <MDBCardHeader className="form-header deep-blue-gradient rounded">
@@ -75,9 +76,11 @@ const LoginPage = () => {
                     </MDBBtn>
                   </div>
                 </form>
-                <MDBModalFooter>
+                <MDBModalFooter style={{ fontSize: "18px" }}>
                   <div className="font-weight-light">
-                    <p>Not a member? Sign Up</p>
+                    <p>
+                      Not a member? <Link to="/register">Sign up</Link>
+                    </p>
                     <p>Forgot Password?</p>
                   </div>
                 </MDBModalFooter>
