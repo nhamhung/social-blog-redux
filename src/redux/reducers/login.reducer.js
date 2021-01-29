@@ -16,10 +16,19 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        // user: something,
         loading: false,
       };
     case types.LOGIN_FAILURE:
+      return { ...state, loading: false, error: payload };
+    case types.GET_USER_REQUEST:
+      return { ...state, loading: true };
+    case types.GET_USER_SUCCESS:
+      return {
+        ...state,
+        user: payload,
+        loading: false,
+      };
+    case types.GET_USER_FAILURE:
       return { ...state, loading: false, error: payload };
     default:
       return state;
