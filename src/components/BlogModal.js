@@ -8,15 +8,15 @@ import {
 } from 'mdbreact';
 import BlogDetail from './BlogDetail';
 
-const BlogModal = ({ modal, handdleToggle, blogDetails }) => {
+const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   return (
-    <MDBModal isOpen={modal} toggle={handdleToggle} size='lg'>
-      <MDBModalHeader toggle={handdleToggle}></MDBModalHeader>
+    <MDBModal isOpen={modal} toggle={handleToggle} size='lg'>
+      <MDBModalHeader toggle={handleToggle}></MDBModalHeader>
       <MDBModalBody>
         <BlogDetail blogDetails={blogDetails} />
       </MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn color='secondary' onClick={handdleToggle}>
+        <MDBBtn color='secondary' onClick={handleToggle}>
           Close
         </MDBBtn>
       </MDBModalFooter>
