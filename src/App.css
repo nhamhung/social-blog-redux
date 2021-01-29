@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+.blogDetail,
+.blogCard {
+  font-size: 1rem;
+}
+
 .landingPage,
 .loginPage,
 .userHomePage,
@@ -19,7 +24,7 @@
   flex-direction: column;
 }
 
-.blog-card-list {
+.blogCardList {
   display: flex;
   flex-wrap: wrap;
   max-width: 90%;
