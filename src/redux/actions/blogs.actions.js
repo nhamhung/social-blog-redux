@@ -1,5 +1,5 @@
-import * as types from "../constants/blogs.constants";
-import api from "../../apiService";
+import * as types from '../constants/blogs.constants';
+import api from '../../apiService';
 
 const BlogsData = () => async (dispatch) => {
   const query = `?page=1&limit=20&sortBy[createdAt]=1`;
@@ -7,6 +7,7 @@ const BlogsData = () => async (dispatch) => {
   api
     .get(`/blogs${query}`)
     .then(function (response) {
+      console.log('response', response.data.data.blogs);
       if (response.data && response.data.data.blogs)
         dispatch({
           type: types.GET_BLOGS_DATA_SUCCESS,
@@ -19,6 +20,6 @@ const BlogsData = () => async (dispatch) => {
     });
 };
 
-const BlogsActions = { BlogsData };
+const blogsActions = { BlogsData };
 
-export default BlogsActions;
+export default blogsActions;

@@ -20,9 +20,7 @@ function Navbar() {
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
           <div className="nav-links-wrapper">
-            <Link exact to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </div>

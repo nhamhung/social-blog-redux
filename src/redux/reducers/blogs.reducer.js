@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const BlogsReducer = (state = initialState, action) => {
+const blogsReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case types.GET_BLOGS_DATA_REQUEST:
@@ -20,4 +20,4 @@ const BlogsReducer = (state = initialState, action) => {
   }
 };
 
-export default BlogsReducer;
+export default blogsReducer;
