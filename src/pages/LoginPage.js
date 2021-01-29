@@ -13,12 +13,12 @@ import {
 } from "mdbreact";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import loginActions from "../redux/actions/login.actions";
+import authActions from "../redux/actions/auth.actions";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginActions.loginRequest(email, password));
+    dispatch(authActions.loginRequest(email, password));
   };
   useEffect(() => {
     console.log(isAuthenticated);

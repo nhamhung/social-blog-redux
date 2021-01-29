@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../css/Navbar.css";
 import { IconContext } from "react-icons";
+import { useDispatch } from "react-redux";
+import FriendsActions from "../redux/actions/friends.actions";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
+  const dispatch = useDispatch();
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -35,7 +37,15 @@ function Navbar() {
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}
-                    <span>{item.title}</span>
+                    {item.title === "Friends" ? (
+                      <span
+                        onClick={() => dispatch(FriendsActions.getFriendList())}
+                      >
+                        {item.title}
+                      </span>
+                    ) : (
+                      <span>{item.title}</span>
+                    )}
                   </Link>
                 </li>
               );
