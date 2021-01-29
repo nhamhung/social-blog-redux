@@ -1,12 +1,7 @@
-import React from "react";
-import BlogCardList from "../components/BlogCardList";
+import React from 'react';
 
 const LandingPage = () => {
-  return (
-    <div className="landingPage">
-      <BlogCardList />
-    </div>
-  );
+  return <div className='landingPage'>This is landing page!</div>;
 };
 
 export default LandingPage;

@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import BlogCard from './BlogCard';
 
-import { useDispatch, useSelector } from 'react-redux';
-import blogsActions from '../redux/actions/blogs.actions';
+import { useSelector } from 'react-redux';
 
 const BlogCardList = () => {
   const blogList = useSelector((state) => state.blogs.blogs);
   const loading = useSelector((state) => state.blogs.loading);
-  // const dispatch = useDispatch();
 
   console.log('blog list', blogList);
-
-  // useEffect(() => {
-  //   dispatch(blogsActions.getBlogsData());
-  // }, [dispatch]);
 
   return (
     <div className='blogCardList'>

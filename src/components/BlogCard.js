@@ -68,11 +68,11 @@ const BlogCard = ({ blog }) => {
           <a href='#!' className='green-text'>
             <h6 className='font-weight-bold mb-3'>
               <MDBIcon icon='utensils' className='pr-2' />
-              Food
+              Blog
             </h6>
           </a>
           <h3 className='font-weight-bold mb-3 p-0'>
-            <strong>Title of the news</strong>
+            <strong>{blog.title}</strong>
           </h3>
           <p>
             Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
@@ -83,7 +83,7 @@ const BlogCard = ({ blog }) => {
           <p>
             by
             <a href='#!'>
-              <strong>Carine Fox</strong>
+              <strong>{blog.author.name}</strong>
             </a>
             , 19/08/2018
           </p>
