@@ -1,8 +1,10 @@
 import React from "react";
+import BlogCardList from "../components/BlogCardList";
+
 const LandingPage = () => {
   return (
     <div className="landingPage">
-      <h1>Welcome. This is the home page</h1>
+      <BlogCardList />
     </div>
   );
 };

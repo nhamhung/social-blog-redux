@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import BlogCardList from "../components/BlogCardList";
 import BlogsActions from "../redux/actions/blogs.actions";
 
 const UserHomePage = () => {
@@ -10,9 +9,7 @@ const UserHomePage = () => {
   }, [dispatch]);
   return (
     <div className="userHomePage">
-      <p>You're authenticated!</p>
-      <h1>User Home Page</h1>
-      <BlogCardList />
+      <p>You're authenticated! - User Home Page</p>
     </div>
   );
 };

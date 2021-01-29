@@ -18,3 +18,16 @@
 .userHomePage {
   flex-direction: column;
 }
+
+.blog-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90%;
+  height: 100%;
+  margin-top: 80px;
+  justify-content: space-evenly;
+}
+
+.blog-card {
+  margin: 1rem;
+}
