@@ -2,37 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-.blogDetail,
-.blogCard {
-  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .landingPage,
 .loginPage,
-.userHomePage,
 .registerPage {
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-}
-
-.userHomePage {
-  flex-direction: column;
-}
-
-.blogCardList {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 90%;
-  height: 100%;
-  margin-top: 80px;
-  justify-content: space-evenly;
-}
-
-.blog-card {
-  margin: 1rem;
 }
