@@ -4,6 +4,7 @@ const initialState = {
   friendList: [],
   userSearched: [],
   pendingFriendRequest: [],
+  incFriendRequest: [],
   loading: false,
   error: null,
 };
@@ -55,6 +56,16 @@ const FriendsReducer = (state = initialState, action) => {
         // ),
       };
     case types.CANCEL_FRIEND_REQUEST_FAILURE:
+      return { ...state, error: payload, loading: false };
+    case types.GET_INC_FRIEND_REQUEST_REQUEST:
+      return { ...state, loading: true };
+    case types.GET_INC_FRIEND_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        incFriendRequest: payload,
+      };
+    case types.GET_INC_FRIEND_REQUEST_FAILURE:
       return { ...state, error: payload, loading: false };
     default:
       return state;
