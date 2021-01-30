@@ -38,8 +38,6 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
     }
   }, [sortOrder]);
 
-  console.log(searchTerm);
-
   return (
     <div className="blogCardList">
       {!loading ? (
