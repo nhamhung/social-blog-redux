@@ -11,7 +11,7 @@ import {
   MDBIcon,
 } from 'mdbreact';
 import Moment from 'react-moment';
-import Icons from './Icons';
+import ReactionIcons from './ReactionIcons';
 
 const BlogDetail = ({ blogDetails }) => {
   const img_url_regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
@@ -47,7 +47,11 @@ const BlogDetail = ({ blogDetails }) => {
                   </a>
                   <Moment fromNow>{blogDetails.createdAt}</Moment>
                 </p>
-                <Icons blogDetails={blogDetails} />
+                <ReactionIcons
+                  reactions={blogDetails.reactions}
+                  flag={'Blog'}
+                  id={blogDetails._id}
+                />
                 <MDBBtn>
                   <MDBIcon far icon='comments' />
                 </MDBBtn>

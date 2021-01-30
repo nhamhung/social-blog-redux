@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { MDBListGroupItem } from 'mdbreact';
-import Icons from './Icons';
+import ReactionIcons from './ReactionIcons';
 
 const ReviewCard = ({ review }) => {
   return (
@@ -17,7 +17,11 @@ const ReviewCard = ({ review }) => {
           </small>
         </div>
         <p className='mb-1'>posted by {review.user}</p>
-        <Icons reviewDetails={review} />
+        <ReactionIcons
+          reactions={review.reactions}
+          flag={'Review'}
+          id={review._id}
+        />
       </MDBListGroupItem>
     </div>
   );
