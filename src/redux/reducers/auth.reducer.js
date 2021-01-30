@@ -36,6 +36,9 @@ const AuthReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case types.REGISTER_FAILURE:
       return { ...state, loading: false, error: payload };
+    case types.LOGOUT:
+      localStorage.removeItem("token");
+      return { ...state, isAuthenticated: false };
     default:
       return state;
   }
