@@ -29,9 +29,12 @@ function Navbar() {
           <div className="nav-links-wrapper">
             <Link to="/">Home</Link>
             {isAuthenticated ? (
-              <Link to="/" onClick={handleLogout}>
-                Logout
-              </Link>
+              <>
+                <Link to="/profile">Profile</Link>
+                <Link to="/" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </>
             ) : (
               <>
                 <Link to="/login">Login</Link>

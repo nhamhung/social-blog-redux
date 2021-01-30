@@ -16,6 +16,7 @@ View online at: [link](link)
 ```-->
 
 ## Required Features
+
 - [ ] User can see all the blog posts on the homepage, order by created time
 - [x] User can register to have an account
 - [x] User can log in with username and password
@@ -25,6 +26,7 @@ View online at: [link](link)
 - [ ] User stays logged in after refreshing browser.
 
 ## Rockets (Optional)
+
 - [ ] After login, user can react (laugh, like, sad, love, angry) to blog posts
 - [ ] Pagination for blogs, reviews
 - [ ] Searching and sorting of blogs

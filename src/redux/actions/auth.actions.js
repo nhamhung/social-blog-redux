@@ -45,6 +45,18 @@ const registerRequest = (name, email, password) => async (dispatch) => {
     });
 };
 
-const authActions = { loginRequest, registerRequest };
+const getUser = () => async (dispatch) => {
+  dispatch({ type: types.GET_USER_REQUEST });
+  api
+    .get("/users/me")
+    .then((response) =>
+      dispatch({ type: types.GET_USER_SUCCESS, payload: response.data })
+    )
+    .catch((error) => {
+      console.log(error);
+      dispatch({ type: types.GET_USER_FAILURE, payload: error });
+    });
+};
+const authActions = { loginRequest, registerRequest, getUser };
 
 export default authActions;

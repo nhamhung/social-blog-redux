@@ -6,6 +6,8 @@ import SearchBar from '../components/SearchBar';
 import Sort from '../components/Sort';
 import { MDBContainer, MDBRow } from 'mdbreact';
 import FriendsButton from '../components/FriendsButton';
+import WritePostButton from "../components/WritePostButton";
+import authActions from "../redux/actions/auth.actions";
 import '../css/Navbar.css';
 
 const UserHomePage = () => {
@@ -15,6 +17,7 @@ const UserHomePage = () => {
 
   useEffect(() => {
     dispatch(BlogsActions.BlogsData());
+    dispatch(authActions.getUser());
   }, [dispatch]);
 
   const handleSearch = (e) => {
@@ -33,6 +36,7 @@ const UserHomePage = () => {
       </MDBRow>
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
       <FriendsButton />
+      <WritePostButton />
     </MDBContainer>
   );
 };
