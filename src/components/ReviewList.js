@@ -4,7 +4,7 @@ import ReviewCard from './ReviewCard';
 
 const ReviewList = ({ reviews }) => {
   return (
-    <MDBRow>
+    <MDBRow className='reviewList'>
       {reviews.map((review, index) => (
         <ReviewCard review={review} key={index} />
       ))}

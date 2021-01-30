@@ -4,7 +4,7 @@ import BlogsActions from '../redux/actions/blogs.actions';
 import BlogCardList from '../components/BlogCardList';
 import SearchBar from '../components/SearchBar';
 import Sort from '../components/Sort';
-import { MDBRow } from 'mdbreact';
+import { MDBContainer, MDBRow } from 'mdbreact';
 import FriendsButton from '../components/FriendsButton';
 import '../css/Navbar.css';
 
@@ -26,14 +26,14 @@ const UserHomePage = () => {
   };
 
   return (
-    <div className='userHomePage'>
-      <MDBRow>
+    <MDBContainer>
+      <MDBRow className='searchBarContainer'>
         <SearchBar handleSearch={handleSearch} />
         <Sort handleSort={handleSort} />
       </MDBRow>
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
       <FriendsButton />
-    </div>
+    </MDBContainer>
   );
 };
 

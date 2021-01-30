@@ -41,9 +41,13 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
   return (
     <div className='blogCardList'>
       {!loading ? (
-        filterBlogList.map((blog, index) => (
-          <BlogCard blog={blog} key={index} />
-        ))
+        filterBlogList.length == 0 ? (
+          blogList.map((blog, index) => <BlogCard blog={blog} key={index} />)
+        ) : (
+          filterBlogList.map((blog, index) => (
+            <BlogCard blog={blog} key={index} />
+          ))
+        )
       ) : (
         <h1>Loading</h1>
       )}

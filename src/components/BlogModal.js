@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReviewsActions from '../redux/actions/reviews.actions';
 import ReviewList from './ReviewList';
@@ -12,7 +12,7 @@ import {
 } from 'mdbreact';
 import BlogDetail from './BlogDetail';
 
-const BlogModal = ({ modal, handdleToggle, blogDetails }) => {
+const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (modal) dispatch(ReviewsActions.getReviews(blogDetails._id));
@@ -22,7 +22,7 @@ const BlogModal = ({ modal, handdleToggle, blogDetails }) => {
 
   if (modal) console.log('Blog details', blogDetails);
   return (
-    <MDBModal isOpen={modal} toggle={handdleToggle} size='lg'>
+    <MDBModal isOpen={modal} toggle={handleToggle} size='lg'>
       <MDBModalHeader></MDBModalHeader>
       <MDBModalBody>
         <BlogDetail blogDetails={blogDetails} />

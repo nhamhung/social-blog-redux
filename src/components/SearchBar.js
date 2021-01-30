@@ -5,7 +5,7 @@ const SearchBar = ({ handleSearch }) => {
   return (
     <MDBCol md='9'>
       <input
-        className='form-control'
+        className='form-control searchBar'
         type='text'
         placeholder='Search'
         aria-label='Search'

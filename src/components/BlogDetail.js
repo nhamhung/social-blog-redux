@@ -10,8 +10,11 @@ import {
   MDBView,
   MDBBtn,
 } from 'mdbreact';
+import Moment from 'react-moment';
 
 const BlogDetail = ({ blogDetails }) => {
+  const img_url_regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+
   return (
     <MDBCard className='my-5 px-5 pb-5 blogDetail'>
       <MDBCardBody>
@@ -20,7 +23,13 @@ const BlogDetail = ({ blogDetails }) => {
             <MDBCard reverse>
               <MDBView hover cascade waves>
                 <img
-                  src='https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg'
+                  src={
+                    blogDetails.images &&
+                    blogDetails.images[0] &&
+                    blogDetails.images[0].match(img_url_regex)
+                      ? blogDetails.images[blogDetails.images.length - 1]
+                      : 'https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg'
+                  }
                   alt=''
                   className='img-fluid'
                 />
@@ -33,9 +42,9 @@ const BlogDetail = ({ blogDetails }) => {
                 <p>
                   Written by
                   <a href='#!'>
-                    <strong> {blogDetails.author.name}</strong>
+                    <strong> {blogDetails.author.name} - </strong>
                   </a>
-                  , {blogDetails.author.createdAt.substring(0, 9)}
+                  <Moment fromNow>{blogDetails.createdAt}</Moment>
                 </p>
                 <MDBBtn>
                   <MDBIcon far icon='grin-squint-tears' />
