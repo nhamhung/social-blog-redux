@@ -24,6 +24,26 @@ const getReviews = (id) => async (dispatch) => {
     });
 };
 
-const reviewActions = { getReviews };
+const postReviews = (id, content) => async (dispatch) => {
+  dispatch({ type: types.POST_BLOG_REVIEW_REQUEST });
+  api
+    .post(`/reviews/blogs/${id}`, {
+      content,
+    })
+    .then((response) => {
+      if (response.data) {
+        dispatch({
+          type: types.POST_BLOG_REVIEW_SUCCESS,
+          payload: response.data.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({ type: types.POST_BLOG_REVIEW_FAILURE, payload: error });
+    });
+};
+
+const reviewActions = { getReviews, postReviews };
 
 export default reviewActions;
