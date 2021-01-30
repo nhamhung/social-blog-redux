@@ -5,10 +5,10 @@ const SearchUser = ({ FriendsActions }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const history = useHistory();
   const handleSubmit = (e) => {
-    e.key === "Enter" && e.target.value
-      ? dispatch(FriendsActions.searchUser(searchTerm))
-      : console.log("");
-    history.push("/search");
+    if (e.key === "Enter" && e.target.value) {
+      dispatch(FriendsActions.searchUser(searchTerm));
+      history.push("/search");
+    }
   };
   const dispatch = useDispatch();
   useEffect(() => {

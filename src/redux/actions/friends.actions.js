@@ -35,6 +35,61 @@ const searchUser = (query) => async (dispatch) => {
     });
 };
 
-const FriendsActions = { getFriendList, searchUser };
+const sendFriendRequest = (id) => async (dispatch) => {
+  dispatch({ type: types.SEND_FRIEND_REQUEST_REQUEST });
+  api
+    .post(`/friends/add/${id}`)
+    .then(function (response) {
+      if (response.data.success)
+        dispatch({
+          type: types.SEND_FRIEND_REQUEST_SUCCESS,
+          payload: id,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.SEND_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
+
+const cancelFriendRequest = (id) => async (dispatch) => {
+  dispatch({ type: types.CANCEL_FRIEND_REQUEST_REQUEST });
+  api
+    .delete(`/friends/add/${id}`)
+    .then(function (response) {
+      if (response.data.success)
+        dispatch({
+          type: types.CANCEL_FRIEND_REQUEST_SUCCESS,
+          payload: id,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.CANCEL_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
+const getFriendRequest = () => async (dispatch) => {
+  dispatch({ type: types.GET_FRIEND_REQUEST_REQUEST });
+  api
+    .get(`/friends/add`)
+    .then(function (response) {
+      if (response.data.data.users)
+        dispatch({
+          type: types.GET_FRIEND_REQUEST_SUCCESS,
+          payload: response.data.data.users,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.GET_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
+const FriendsActions = {
+  getFriendList,
+  searchUser,
+  sendFriendRequest,
+  cancelFriendRequest,
+  getFriendRequest,
+};
 
 export default FriendsActions;
