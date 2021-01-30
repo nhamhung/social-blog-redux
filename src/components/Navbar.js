@@ -7,11 +7,18 @@ import "../css/Navbar.css";
 import { IconContext } from "react-icons";
 import { useDispatch } from "react-redux";
 import FriendsActions from "../redux/actions/friends.actions";
+import { useSelector } from "react-redux";
+import { LOGOUT } from "../redux/constants/auth.constants";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const handleLogout = () => {
+    dispatch({ type: LOGOUT });
+  };
+
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -21,8 +28,16 @@ function Navbar() {
           </Link>
           <div className="nav-links-wrapper">
             <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            {isAuthenticated ? (
+              <Link to="/" onClick={handleLogout}>
+                Logout
+              </Link>
+            ) : (
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+              </>
+            )}
           </div>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
