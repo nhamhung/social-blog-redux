@@ -69,3 +69,14 @@
 .searchBar {
   background-color: #f6f5f5;
 }
+
+.modalReview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalReview button {
+  /* height: 20px; */
+}

@@ -1,17 +1,6 @@
-import React, { useState } from 'react';
-import { MDBBtn, MDBIcon } from 'mdbreact';
-import { useDispatch, useSelector } from 'react-redux';
-import sendReactions from '../redux/actions/reactions.actions';
+import React from 'react';
 
-const ReactionIcons = ({ reactions, flag, id }) => {
-  const dispatch = useDispatch();
-
-  const storeReactions = useSelector((state) => state.reactions.response);
-
-  const handleClick = (reaction) => {
-    dispatch(sendReactions(flag, id, reaction));
-  };
-
+const ReviewIcons = ({ reactions, flag, id }) => {
   return (
     <div>
       <MDBBtn onClick={() => handleClick('laugh')}>
@@ -49,13 +38,8 @@ const ReactionIcons = ({ reactions, flag, id }) => {
       <MDBBtn onClick={() => handleClick('angry')}>
         <MDBIcon far icon='angry' />
       </MDBBtn>
-      <span className='counter'>
-        {Object.keys(storeReactions).length === 0
-          ? reactions.angry
-          : storeReactions.angry}
-      </span>
     </div>
   );
 };
 
-export default ReactionIcons;
+export default ReviewIcons;

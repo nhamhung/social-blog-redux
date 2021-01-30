@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 const SearchUser = ({ FriendsActions }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  // .filter((movie) =>
-  //       movie.title.toLowerCase().includes(filterTerm.toLowerCase())
-  //     );
+  const history = useHistory();
+  const handleSubmit = (e) => {
+    if (e.key === "Enter" && e.target.value) {
+      dispatch(FriendsActions.searchUser(searchTerm));
+      history.push("/search");
+    }
+  };
   const dispatch = useDispatch();
   useEffect(() => {
     console.log(searchTerm);
@@ -13,11 +18,7 @@ const SearchUser = ({ FriendsActions }) => {
     <>
       <input
         onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyUp={(e) =>
-          e.key === "Enter"
-            ? dispatch(FriendsActions.searchUser(searchTerm))
-            : null
-        }
+        onKeyUp={(e) => handleSubmit(e)}
         type="text"
         placeholder="Search user..."
       />
