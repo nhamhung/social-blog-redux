@@ -29,7 +29,7 @@ const BlogModal = ({ modal, handdleToggle, blogDetails }) => {
         <ReviewList reviews={reviews} />
       </MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn color='secondary' onClick={handdleToggle}>
+        <MDBBtn color='secondary' onClick={handleToggle}>
           Close
         </MDBBtn>
       </MDBModalFooter>

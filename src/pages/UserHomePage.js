@@ -5,6 +5,7 @@ import BlogCardList from '../components/BlogCardList';
 import SearchBar from '../components/SearchBar';
 import Sort from '../components/Sort';
 import { MDBRow } from 'mdbreact';
+import FriendsButton from '../components/FriendsButton';
 import '../css/Navbar.css';
 
 const UserHomePage = () => {
@@ -31,6 +32,7 @@ const UserHomePage = () => {
         <Sort handleSort={handleSort} />
       </MDBRow>
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
+      <FriendsButton />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BlogCard from './BlogCard';
+import '../css/Blog.css';
+
 import { useSelector } from 'react-redux';
 
 const BlogCardList = ({ searchTerm, sortOrder }) => {

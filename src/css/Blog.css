@@ -1,0 +1,44 @@
+.blogCardList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogDetail,
+.blogCard {
+  margin-top: 20px;
+  background-color: #f5f4f4;
+}
+
+.blogImg {
+  padding: 0px;
+}
+
+.blogCard img {
+  height: 300px;
+  width: 930px;
+}
+
+.blogCardText {
+  font-size: 1rem;
+  padding: 20px 20px 20px 40px;
+}
+
+.blogContent {
+  width: 100%;
+  height: 100px;
+  overflow: scroll;
+  /* text-overflow: ellipsis; */
+}
+
+.blogContent::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.blogContent::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
