@@ -84,12 +84,31 @@ const getFriendRequest = () => async (dispatch) => {
       dispatch({ type: types.GET_FRIEND_REQUEST_FAILURE, payload: error });
     });
 };
+
+const getIncomingFriendRequest = () => async (dispatch) => {
+  dispatch({ type: types.GET_INC_FRIEND_REQUEST_REQUEST });
+  api
+    .get(`/friends/manage`)
+    .then(function (response) {
+      if (response.data.data.users)
+        dispatch({
+          type: types.GET_INC_FRIEND_REQUEST_SUCCESS,
+          payload: response.data.data.users,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.GET_INC_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
+
 const FriendsActions = {
   getFriendList,
   searchUser,
   sendFriendRequest,
   cancelFriendRequest,
   getFriendRequest,
+  getIncomingFriendRequest,
 };
 
 export default FriendsActions;
