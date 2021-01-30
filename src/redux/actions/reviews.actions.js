@@ -1,4 +1,4 @@
-import * as types from '../constants/blogs.constants';
+import * as types from '../constants/reviews.constants';
 import api from '../../apiService';
 
 const getReviews = (id) => async (dispatch) => {

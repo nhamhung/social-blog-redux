@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
-import { MDBListGroupItem, MDBBtn, MDBIcon } from 'mdbreact';
+import { MDBListGroupItem } from 'mdbreact';
+import Icons from './Icons';
 
 const ReviewCard = ({ review }) => {
   return (
@@ -16,25 +17,7 @@ const ReviewCard = ({ review }) => {
           </small>
         </div>
         <p className='mb-1'>posted by {review.user}</p>
-        <MDBBtn>
-          <MDBIcon far icon='grin-squint-tears' />
-        </MDBBtn>
-        <span className='counter'>{review.reactions.laugh}</span>
-        <MDBBtn>
-          <MDBIcon far icon='sad-cry' />
-        </MDBBtn>
-        <span className='counter'>{review.reactions.sad}</span>
-        <MDBBtn>
-          <MDBIcon far icon='thumbs-up' />
-        </MDBBtn>
-        <span className='counter'>{review.reactions.like}</span>
-        <MDBBtn color='default' className='waves-light'>
-          <MDBIcon far icon='grin-hearts' />
-        </MDBBtn>
-        <span className='counter'>{review.reactions.love}</span>
-        <MDBBtn color='default' className='waves-light'>
-          <MDBIcon far icon='angry' />
-        </MDBBtn>
+        <Icons reviewDetails={review} />
       </MDBListGroupItem>
     </div>
   );
