@@ -1,3 +1,5 @@
+/* blog css */
+
 .blogCardList {
   display: flex;
   flex-direction: column;
@@ -41,4 +43,29 @@
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background: rgba(0, 0, 0, 0.2);
+}
+
+/* review css */
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewCard {
+  margin-top: 20px;
+  background-color: burlywood;
+}
+
+/* search bar css*/
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 20px;
+}
+
+.searchBar {
+  background-color: #f6f5f5;
 }
