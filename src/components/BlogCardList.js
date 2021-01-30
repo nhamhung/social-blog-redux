@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogCard from './BlogCard';
+import '../css/Blog.css';
 
 import { useSelector } from 'react-redux';
 
