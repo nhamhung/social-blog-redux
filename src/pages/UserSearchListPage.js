@@ -63,9 +63,11 @@ const UserSearchListPage = () => {
   return (
     <MDBContainer>
       <MDBRow>
-        {searchedUsers.map((user) => (
-          <UserSearchedCard user={user} />
-        ))}
+        {searchedUsers.length > 0 ? (
+          searchedUsers.map((user) => <UserSearchedCard user={user} />)
+        ) : (
+          <h1>No users found</h1>
+        )}
       </MDBRow>{" "}
     </MDBContainer>
   );
