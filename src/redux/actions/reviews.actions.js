@@ -36,6 +36,7 @@ const postReviews = (id, content) => async (dispatch) => {
           type: types.POST_BLOG_REVIEW_SUCCESS,
           payload: response.data.data,
         });
+        dispatch(getReviews(id));
       }
     })
     .catch((error) => {
