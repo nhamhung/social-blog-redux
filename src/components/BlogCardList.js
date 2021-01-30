@@ -9,17 +9,12 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
   const blogList = useSelector((state) => state.blogs.blogs);
   const loading = useSelector((state) => state.blogs.loading);
 
-  console.log("blog list", blogList);
-  console.log(sortOrder);
-
   useEffect(() => {
-    if (filterBlogList == null) {
-      setFilterBlogList(
-        blogList.filter((x) =>
-          x.title.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-    }
+    setFilterBlogList(
+      blogList.filter((x) =>
+        x.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
   }, [searchTerm]);
 
   useEffect(() => {

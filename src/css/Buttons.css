@@ -12,7 +12,6 @@
   border-radius: 50%;
   position: fixed;
   transition: 0.15s;
-  color: #1a83ff;
 }
 
 .floating-button:hover {
