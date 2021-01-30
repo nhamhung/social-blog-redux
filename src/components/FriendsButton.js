@@ -13,8 +13,3 @@ const FriendsButton = () => {
 };
 
 export default FriendsButton;
-
-// import * as MIcons from "react-icons/md";
-{
-  /* <MIcons.MdEdit /> */
-}
