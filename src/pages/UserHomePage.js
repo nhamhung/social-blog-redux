@@ -24,7 +24,7 @@ const UserHomePage = () => {
   useEffect(() => {
     dispatch(FriendsActions.getIncomingFriendRequest());
   }, [dispatch]);
-  
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -43,7 +43,7 @@ const UserHomePage = () => {
 
       <FriendsButton />
       <WritePostButton />
-    </div>
+    </MDBContainer>
   );
 };
 
