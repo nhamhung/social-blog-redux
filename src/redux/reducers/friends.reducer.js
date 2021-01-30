@@ -26,10 +26,11 @@ const FriendsReducer = (state = initialState, action) => {
     case types.GET_FRIEND_REQUEST_REQUEST:
       return { ...state, loading: true };
     case types.GET_FRIEND_REQUEST_SUCCESS:
+      let arr = payload.filter((v, i) => payload.indexOf(v) === i);
       return {
         ...state,
         loading: false,
-        pendingFriendRequest: [...state.pendingFriendRequest, ...payload],
+        pendingFriendRequest: [...arr],
       };
     case types.GET_FRIEND_REQUEST_FAILURE:
       return { ...state, error: payload, loading: false };
