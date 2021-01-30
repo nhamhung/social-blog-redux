@@ -19,11 +19,12 @@ const UserHomePage = () => {
 
   useEffect(() => {
     dispatch(BlogsActions.BlogsData());
-    dispatch(authActions.getUser());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(FriendsActions.getIncomingFriendRequest());
   }, [dispatch]);
+  
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -39,9 +40,10 @@ const UserHomePage = () => {
         <Sort handleSort={handleSort} />
       </MDBRow>
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
+
       <FriendsButton />
       <WritePostButton />
-    </MDBContainer>
+    </div>
   );
 };
 
