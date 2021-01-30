@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BlogModal from './BlogModal';
 import { MDBBtn, MDBView, MDBMask, MDBIcon, MDBCol, MDBRow } from 'mdbreact';
+import Moment from 'react-moment';
 
 const BlogCard = ({ blog }) => {
   const [modal, setModal] = useState(false);
@@ -48,7 +49,7 @@ const BlogCard = ({ blog }) => {
             <a href='#!'>
               <strong>{blog.author.name}</strong>
             </a>
-            , 19/08/2018
+            <Moment fromNow>{blog.createdAt}</Moment>
           </p>
           <MDBBtn
             color='success'
