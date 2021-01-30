@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import FriendsActions from "../redux/actions/friends.actions";
 import { useSelector } from "react-redux";
 import { LOGOUT } from "../redux/constants/auth.constants";
+import SearchUser from "./SearchUser";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -65,6 +66,11 @@ function Navbar() {
                 </li>
               );
             })}
+          </ul>
+          <ul className="nav-menu-items">
+            <li>
+              <SearchUser FriendsActions={FriendsActions} />
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>

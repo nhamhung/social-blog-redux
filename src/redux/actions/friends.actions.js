@@ -18,6 +18,23 @@ const getFriendList = () => async (dispatch) => {
     });
 };
 
-const FriendsActions = { getFriendList };
+const searchUser = (query) => async (dispatch) => {
+  dispatch({ type: types.SEARCH_USER_REQUEST });
+  api
+    .get(`/users?name[$regex]=${query}&name[$options]=i`)
+    .then(function (response) {
+      if (response.data && response.data.data.users)
+        dispatch({
+          type: types.SEARCH_USER_SUCCESS,
+          payload: response.data.data.users,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.SEARCH_USER_FAILURE, payload: error });
+    });
+};
+
+const FriendsActions = { getFriendList, searchUser };
 
 export default FriendsActions;
