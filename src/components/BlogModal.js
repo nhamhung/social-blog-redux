@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewsActions from "../redux/actions/reviews.actions";
 import ReviewList from "./ReviewList";
-
+import BlogEditModal from "./BlogEditModal";
 import {
   MDBModal,
   MDBModalHeader,
@@ -13,6 +13,7 @@ import {
   MDBRow,
 } from "mdbreact";
 import BlogDetail from "./BlogDetail";
+import { SELECT_SINGLE_BLOG } from "../redux/constants/blogs.constants";
 
 const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const [review, setReview] = useState("");
@@ -21,7 +22,9 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   useEffect(() => {
     if (modal) dispatch(ReviewsActions.getReviews(blogDetails._id));
   }, [dispatch, modal]);
-
+  useEffect(() => {
+    if (modal) dispatch({ type: SELECT_SINGLE_BLOG, payload: blogDetails._id });
+  }, [dispatch, modal]);
   const reviews = useSelector((state) => state.reviews.reviews);
 
   const handleReview = (e) => {
@@ -54,7 +57,7 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
           </MDBBtn>
         </MDBRow>
         <MDBBtn outline color="default">
-          Edit
+          <BlogEditModal blog={blogDetails} />
         </MDBBtn>
         <MDBBtn color="secondary" onClick={handleToggle}>
           Close

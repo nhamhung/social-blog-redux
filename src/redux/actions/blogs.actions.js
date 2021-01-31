@@ -36,6 +36,24 @@ const writeBlog = (title, content, url) => async (dispatch) => {
     });
 };
 
-const blogsActions = { BlogsData, writeBlog };
+const editBlog = (title, content, url, id) => async (dispatch) => {
+  dispatch({ type: types.SELECT_SINGLE_BLOG, payload: id });
+  console.log(title);
+  dispatch({ type: types.EDIT_BLOG_REQUEST });
+  api
+    .put(`/blogs/${id}`, { title, content, images: url })
+    .then(function (response) {
+      console.log(response);
+      if (response.data.success)
+        dispatch({
+          type: types.EDIT_BLOG_SUCCESS,
+        });
+    })
+    .catch(function (error) {
+      dispatch({ type: types.EDIT_BLOG_FAILURE, payload: error });
+    });
+};
+
+const blogsActions = { BlogsData, writeBlog, editBlog };
 
 export default blogsActions;
