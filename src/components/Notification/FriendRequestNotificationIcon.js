@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import * as MdIcons from "react-icons/md";
 import "../../css/FriendRequestNotification.css";
-
 import NotificationModal from "./NotificationModal";
+import { useSelector } from "react-redux";
 
 const FriendRequestNotificationIcon = () => {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
+  const requestsList = useSelector((state) => state.friends.incFriendRequest);
 
   const openModal = () => {
     setShowNotificationModal((prev) => !prev);
@@ -16,7 +17,7 @@ const FriendRequestNotificationIcon = () => {
         <MdIcons.MdNotifications className="icon" />
 
         <span id="red" className="badge">
-          2{/* number of friend requests goes here */}
+          {requestsList.length}
         </span>
       </button>
       <NotificationModal

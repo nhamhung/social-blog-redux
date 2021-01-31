@@ -67,6 +67,24 @@ const FriendsReducer = (state = initialState, action) => {
       };
     case types.GET_INC_FRIEND_REQUEST_FAILURE:
       return { ...state, error: payload, loading: false };
+    case types.ACCEPT_FRIEND_REQUEST_REQUEST:
+      return { ...state, loading: true };
+    case types.ACCEPT_FRIEND_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.ACCEPT_FRIEND_REQUEST_FAILURE:
+      return { ...state, error: payload, loading: false };
+    case types.DELETE_FRIEND_REQUEST_REQUEST:
+      return { ...state, loading: true };
+    case types.DELETE_FRIEND_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.DELETE_FRIEND_REQUEST_FAILURE:
+      return { ...state, error: payload, loading: false };
     default:
       return state;
   }

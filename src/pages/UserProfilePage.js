@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileEditModal from "../components/ProfileEditModal";
+import Spinner from "../components/Loader/LoaderSpinner";
 import {
   MDBContainer,
   MDBRow,
@@ -14,14 +15,20 @@ import {
 } from "mdbreact";
 const UserProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
+  const [edited, setEdited] = useState(false);
+  const isEdited = () => setEdited(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authActions.getUser());
-  }, [dispatch]);
+  }, [dispatch, edited]);
   return (
     <>
       {user === null ? (
-        <h1>Loading</h1>
+        <MDBContainer>
+          <MDBRow center className="pt-5">
+            <Spinner />
+          </MDBRow>
+        </MDBContainer>
       ) : (
         <MDBContainer>
           <MDBRow center className="pt-5">
@@ -38,10 +45,13 @@ const UserProfilePage = () => {
                     <p>Email : {user.data.email}</p>
                     <MDBRow>
                       <MDBCol md="12">
-                        <MDBBtn>
-                          <ProfileEditModal user={user} />
+                        <MDBBtn outline>
+                          <ProfileEditModal
+                            user={user.data}
+                            isEdited={isEdited}
+                          />
                         </MDBBtn>
-                        <MDBBtn>Delete account</MDBBtn>
+                        <MDBBtn danger>Delete account</MDBBtn>
                       </MDBCol>
                     </MDBRow>
                   </MDBCardBody>
