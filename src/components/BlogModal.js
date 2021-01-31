@@ -16,6 +16,7 @@ import {
 import BlogDetail from "./BlogDetail";
 import { SELECT_SINGLE_BLOG } from "../redux/constants/blogs.constants";
 
+
 const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const [review, setReview] = useState("");
 
