@@ -44,7 +44,17 @@ const FriendsButton = () => {
           </Link>
         </div>
         <SearchFriend />
-
+        <hr
+          style={{
+            width: "85%",
+            height: ".15rem",
+            borderRadius: "20px",
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            margin: "0 auto",
+          }}
+          size="4"
+        />
+        <div className="friend-list-title">Friends List</div>
         {/* ------------- FRIEND LIST ITEMS -------------- */}
         <ul className="right-side-nav-menu-items" onClick={showSidebar}>
           {/* fetch/map friends list */}
