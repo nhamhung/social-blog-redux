@@ -32,10 +32,6 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const handleSubmitReview = () => {
     /* submit review */
     dispatch(ReviewsActions.postReviews(blogDetails._id, review));
-    setTimeout(() => {
-      dispatch(ReviewsActions.getReviews(blogDetails._id));
-    }, 500);
-    // dispatch(ReviewsActions.getReviews(blogDetails._id));
   };
 
   return (

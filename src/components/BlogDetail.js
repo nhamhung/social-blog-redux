@@ -6,11 +6,12 @@ import {
   MDBCard,
   MDBCardBody,
   MDBMask,
-  MDBIcon,
   MDBView,
   MDBBtn,
+  MDBIcon,
 } from 'mdbreact';
 import Moment from 'react-moment';
+import ReactionIcons from './ReactionIcons';
 
 const BlogDetail = ({ blogDetails }) => {
   const img_url_regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
@@ -46,27 +47,12 @@ const BlogDetail = ({ blogDetails }) => {
                   </a>
                   <Moment fromNow>{blogDetails.createdAt}</Moment>
                 </p>
+                <ReactionIcons
+                  reactions={blogDetails.reactions}
+                  flag={'Blog'}
+                  id={blogDetails._id}
+                />
                 <MDBBtn>
-                  <MDBIcon far icon='grin-squint-tears' />
-                </MDBBtn>
-                <span className='counter'>{blogDetails.reactions.laugh}</span>
-                <MDBBtn>
-                  <MDBIcon far icon='sad-cry' />
-                </MDBBtn>
-                <span className='counter'>{blogDetails.reactions.sad}</span>
-                <MDBBtn>
-                  <MDBIcon far icon='thumbs-up' />
-                </MDBBtn>
-                <span className='counter'>{blogDetails.reactions.like}</span>
-                <MDBBtn color='default' className='waves-light'>
-                  <MDBIcon far icon='grin-hearts' />
-                </MDBBtn>
-                <span className='counter'>{blogDetails.reactions.love}</span>
-                <MDBBtn color='default' className='waves-light'>
-                  <MDBIcon far icon='angry' />
-                </MDBBtn>
-                <span className='counter'>{blogDetails.reactions.angry}</span>
-                <MDBBtn color='default' className='waves-light'>
                   <MDBIcon far icon='comments' />
                 </MDBBtn>
                 <span className='counter'>{blogDetails.reviewCount}</span>
