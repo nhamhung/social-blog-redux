@@ -1,0 +1,20 @@
+.friendList-item-container {
+  width: 80%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1rem auto;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+.friendList-item-container:hover {
+  box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.205);
+  cursor: pointer;
+}
+.friend-list-title {
+  font-size: 1.8rem;
+  margin: 1rem auto;
+  color: white;
+}
