@@ -11,6 +11,7 @@ import authActions from "../redux/actions/auth.actions";
 import FriendsActions from "../redux/actions/friends.actions";
 
 import "../css/Navbar.css";
+import BlogWriteModal from "../components/BlogWriteModal";
 
 const UserHomePage = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const UserHomePage = () => {
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
 
       <FriendsButton />
-      <WritePostButton />
+      <BlogWriteModal />
     </MDBContainer>
   );
 };
