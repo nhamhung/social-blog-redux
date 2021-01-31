@@ -8,6 +8,7 @@ import SearchUser from "./SearchUser";
 import { useDispatch, useSelector } from "react-redux";
 import FriendsActions from "../redux/actions/friends.actions";
 import Friend from "./Friend";
+import LoaderSpinner from "./Loader/LoaderSpinner";
 
 const FriendsButton = () => {
   // by default, sidebar is set to false meaning not displaying
@@ -52,7 +53,7 @@ const FriendsButton = () => {
               <Friend friend={friend} key={index} />
             ))
           ) : (
-            <h1>loading</h1>
+            <LoaderSpinner />
           )}
         </ul>
       </nav>
