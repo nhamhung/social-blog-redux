@@ -19,16 +19,17 @@ const UserSearchedCard = ({ user }) => {
   const pendingFriendRequest = useSelector(
     (state) => state.friends.pendingFriendRequest
   );
+  const [test, setTest] = useState();
   const dispatch = useDispatch();
   const cancelFriendRequest = (id) => {
     dispatch(FriendsActions.cancelFriendRequest(id));
-    dispatch(FriendsActions.getFriendRequest());
   };
   const sendFriendRequest = (id) => {
     dispatch(FriendsActions.sendFriendRequest(id));
-    dispatch(FriendsActions.getFriendRequest());
   };
-
+  useEffect(() => {
+    dispatch(FriendsActions.getFriendRequest());
+  }, [dispatch]);
   return (
     <MDBCol md="4">
       <MDBCard wide cascade>
