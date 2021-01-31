@@ -41,7 +41,6 @@ const UserHomePage = () => {
         <Sort handleSort={handleSort} />
       </MDBRow>
       <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
-
       <FriendsButton />
       <BlogWriteModal />
     </MDBContainer>

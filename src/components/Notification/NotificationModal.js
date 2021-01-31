@@ -5,12 +5,21 @@ import * as AiIcons from "react-icons/ai";
 
 const NotificationModal = ({ showModal, setShowModal }) => {
   return (
-    <>
+    <div>
       {showModal ? (
         <div className="notification-modal">
-          <div className="title">
+          {/* modal title */}
+          <div className="header">
             <h3>Friend Requests</h3>
+            {/* close modal button */}
+            <div
+              className="close-modal-button"
+              onClick={() => setShowModal((prev) => !prev)}
+            >
+              <AiIcons.AiOutlineClose />
+            </div>
           </div>
+          {/* modal friend list */}
           <div className="friend-list-container">
             <ul>
               {/* MAP LIST OF FRIEND REQUESTS HERE */}
@@ -115,7 +124,7 @@ const NotificationModal = ({ showModal, setShowModal }) => {
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 
