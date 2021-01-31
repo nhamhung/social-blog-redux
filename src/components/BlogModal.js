@@ -15,7 +15,6 @@ import {
 } from "mdbreact";
 import BlogDetail from "./BlogDetail";
 import { SELECT_SINGLE_BLOG } from "../redux/constants/blogs.constants";
-} from 'mdbreact';
 
 
 const BlogModal = ({ modal, handleToggle, blogDetails }) => {
