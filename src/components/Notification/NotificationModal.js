@@ -2,11 +2,11 @@ import React from "react";
 import "../../css/NotificationModal.css";
 import * as BsIcons from "react-icons/bs";
 import * as AiIcons from "react-icons/ai";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import FriendsActions from "../../redux/actions/friends.actions";
 const NotificationModal = ({ showModal, setShowModal }) => {
   const requestsList = useSelector((state) => state.friends.incFriendRequest);
-  console.log(requestsList);
+  const dispatch = useDispatch();
   return (
     <div>
       {showModal ? (
@@ -30,13 +30,30 @@ const NotificationModal = ({ showModal, setShowModal }) => {
                   <li>
                     {/* friend request icon */}
                     <div className="icon-wrapper"></div>
-                    <img src={request.avatarUrl} alt="profile" />
+                    <img
+                      style={{ width: "50px" }}
+                      src={request.avatarUrl}
+                      alt="profile"
+                    />
                     {request.name}
                     <div className="accept-button">
                       {" "}
-                      <BsIcons.BsCheck />
+                      <BsIcons.BsCheck
+                        onClick={() =>
+                          dispatch(
+                            FriendsActions.acceptFriendRequest(request._id)
+                          )
+                        }
+                      />
                     </div>
-                    <div className="deny-button">
+                    <div
+                      className="deny-button"
+                      onClick={() =>
+                        dispatch(
+                          FriendsActions.deleteFriendRequest(request._id)
+                        )
+                      }
+                    >
                       <AiIcons.AiOutlineCloseCircle />
                     </div>
                   </li>

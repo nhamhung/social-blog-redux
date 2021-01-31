@@ -101,7 +101,34 @@ const getIncomingFriendRequest = () => async (dispatch) => {
       dispatch({ type: types.GET_INC_FRIEND_REQUEST_FAILURE, payload: error });
     });
 };
-
+const acceptFriendRequest = (id) => async (dispatch) => {
+  dispatch({ type: types.ACCEPT_FRIEND_REQUEST_REQUEST });
+  api
+    .post(`/friends/manage/${id}`)
+    .then(function (response) {
+      if (response.data.success)
+        dispatch({
+          type: types.ACCEPT_FRIEND_REQUEST_SUCCESS,
+        });
+    })
+    .catch(function (error) {
+      dispatch({ type: types.ACCEPT_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
+const deleteFriendRequest = (id) => async (dispatch) => {
+  dispatch({ type: types.DELETE_FRIEND_REQUEST_REQUEST });
+  api
+    .delete(`/friends/manage/${id}`)
+    .then(function (response) {
+      if (response.data.success)
+        dispatch({
+          type: types.DELETE_FRIEND_REQUEST_SUCCESS,
+        });
+    })
+    .catch(function (error) {
+      dispatch({ type: types.DELETE_FRIEND_REQUEST_FAILURE, payload: error });
+    });
+};
 const FriendsActions = {
   getFriendList,
   searchUser,
@@ -109,6 +136,8 @@ const FriendsActions = {
   cancelFriendRequest,
   getFriendRequest,
   getIncomingFriendRequest,
+  acceptFriendRequest,
+  deleteFriendRequest,
 };
 
 export default FriendsActions;
