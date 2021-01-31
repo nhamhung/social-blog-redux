@@ -57,6 +57,7 @@
 
 .floating-button.write-post:hover::after {
   content: "write post";
+  text-transform: lowercase;
   left: -108px;
   top: 25%;
 }

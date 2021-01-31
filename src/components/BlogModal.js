@@ -18,7 +18,7 @@ import { SELECT_SINGLE_BLOG } from "../redux/constants/blogs.constants";
 
 
 const BlogModal = ({ modal, handleToggle, blogDetails }) => {
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,29 +40,28 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   };
 
   return (
-    <MDBModal isOpen={modal} toggle={handleToggle} size='lg'>
+    <MDBModal isOpen={modal} toggle={handleToggle} size="lg">
       <MDBModalHeader></MDBModalHeader>
       <MDBModalBody>
         <BlogDetail blogDetails={blogDetails} />
         <ReviewList reviews={reviews} blogId={blogDetails._id} />
       </MDBModalBody>
-      <MDBModalFooter className='modalReview'>
+      <MDBModalFooter className="modalReview">
         <MDBRow>
           <MDBInput
-            label='Write a review'
+            label="Write a review"
             outline
-            size='lg'
+            size="lg"
             onChange={(e) => handleReview(e)}
           />
-          <MDBBtn color='unique' onClick={handleSubmitReview}>
+          <MDBBtn color="unique" onClick={handleSubmitReview}>
             Review
           </MDBBtn>
         </MDBRow>
         <MDBBtn outline color="default">
           <BlogEditModal blog={blogDetails} />
-
         </MDBBtn>
-        <MDBBtn color='secondary' onClick={handleToggle}>
+        <MDBBtn color="secondary" onClick={handleToggle}>
           Close
         </MDBBtn>
       </MDBModalFooter>

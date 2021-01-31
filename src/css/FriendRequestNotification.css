@@ -1,0 +1,37 @@
+.friend-request-notification .icon-button {
+  background-color: #dddddd3a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: none;
+  outline: none;
+  position: relative;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.friend-request-notification .icon-button:hover {
+  box-shadow: 1px 1px 6px 1px rgba(255, 255, 255, 0.5);
+}
+
+.friend-request-notification .icon-button .icon {
+  font-size: 1.2rem;
+}
+
+.friend-request-notification .badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.friend-request-notification .icon-wrapper {
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid lightblue;
+  border-radius: 50%;
+}
