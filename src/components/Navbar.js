@@ -47,12 +47,15 @@ function Navbar() {
           </div>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+          <div className="navbar-toggle" onClick={showSidebar}>
+            <Link to="#" className="menu-bars">
+              <AiIcons.AiOutlineClose />
+            </Link>
+          </div>
+
+          <SearchUser FriendsActions={FriendsActions} />
+
           <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
@@ -71,11 +74,6 @@ function Navbar() {
                 </li>
               );
             })}
-          </ul>
-          <ul className="nav-menu-items">
-            <li>
-              <SearchUser FriendsActions={FriendsActions} />
-            </li>
           </ul>
         </nav>
       </IconContext.Provider>

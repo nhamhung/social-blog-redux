@@ -23,6 +23,7 @@ const searchUser = (query) => async (dispatch) => {
   api
     .get(`/users?name[$regex]=${query}&name[$options]=i`)
     .then(function (response) {
+      console.log(response);
       if (response.data && response.data.data.users)
         dispatch({
           type: types.SEARCH_USER_SUCCESS,
@@ -32,6 +33,24 @@ const searchUser = (query) => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       dispatch({ type: types.SEARCH_USER_FAILURE, payload: error });
+    });
+};
+
+const searchFriend = (query) => async (dispatch) => {
+  dispatch({ type: types.SEARCH_FRIEND_REQUEST });
+  api
+    .get(`/friends?name[$regex]=${query}&name[$options]=i`)
+    .then(function (response) {
+      console.log(response);
+      if (response.data && response.data.data.users)
+        dispatch({
+          type: types.SEARCH_FRIEND_SUCCESS,
+          payload: response.data.data.users,
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({ type: types.SEARCH_FRIEND_FAILURE, payload: error });
     });
 };
 
@@ -132,6 +151,7 @@ const deleteFriendRequest = (id) => async (dispatch) => {
 const FriendsActions = {
   getFriendList,
   searchUser,
+  searchFriend,
   sendFriendRequest,
   cancelFriendRequest,
   getFriendRequest,

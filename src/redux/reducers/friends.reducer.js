@@ -3,6 +3,7 @@ import * as types from "../constants/friends.constants";
 const initialState = {
   friendList: [],
   userSearched: [],
+  friendSearched: [],
   pendingFriendRequest: [],
   incFriendRequest: [],
   loading: false,
@@ -23,6 +24,12 @@ const FriendsReducer = (state = initialState, action) => {
     case types.SEARCH_USER_SUCCESS:
       return { ...state, userSearched: payload, loading: false };
     case types.SEARCH_USER_FAILURE:
+      return { ...state, error: payload, loading: false };
+    case types.SEARCH_FRIEND_REQUEST:
+      return { ...state, loading: true };
+    case types.SEARCH_FRIEND_SUCCESS:
+      return { ...state, friendSearched: payload, loading: false };
+    case types.SEARCH_FRIEND_FAILURE:
       return { ...state, error: payload, loading: false };
     case types.GET_FRIEND_REQUEST_REQUEST:
       return { ...state, loading: true };
