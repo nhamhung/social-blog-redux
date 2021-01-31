@@ -1,5 +1,5 @@
-import * as types from "../constants/blogs.constants";
-import api from "../../apiService";
+import * as types from '../constants/blogs.constants';
+import api from '../../apiService';
 
 const BlogsData = () => async (dispatch) => {
   const query = `?page=1&limit=20&sortBy[createdAt]=1`;
@@ -7,7 +7,7 @@ const BlogsData = () => async (dispatch) => {
   api
     .get(`/blogs${query}`)
     .then(function (response) {
-      console.log("response", response.data.data.blogs);
+      console.log('response', response.data.data.blogs);
       if (response.data && response.data.data.blogs)
         dispatch({
           type: types.GET_BLOGS_DATA_SUCCESS,
@@ -17,6 +17,23 @@ const BlogsData = () => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       dispatch({ type: types.GET_BLOGS_DATA_FAILURE, payload: error });
+    });
+};
+
+const getBlog = (id) => async (dispatch) => {
+  dispatch({ type: types.GET_A_BLOG_REQUEST });
+  api
+    .get(`/blogs/${id}`)
+    .then((response) => {
+      console.log('Get a blog', response);
+      if (response.data && response.data.data)
+        dispatch({
+          type: types.GET_A_BLOG_SUCCESS,
+          payload: response.data.data,
+        });
+    })
+    .catch((error) => {
+      dispatch({ type: types.GET_A_BLOG_FAILURE, payload: error });
     });
 };
 
@@ -36,6 +53,6 @@ const writeBlog = (title, content, url) => async (dispatch) => {
     });
 };
 
-const blogsActions = { BlogsData, writeBlog };
+const blogsActions = { BlogsData, getBlog, writeBlog };
 
 export default blogsActions;
