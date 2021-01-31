@@ -2,8 +2,11 @@ import React from "react";
 import "../../css/NotificationModal.css";
 import * as BsIcons from "react-icons/bs";
 import * as AiIcons from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const NotificationModal = ({ showModal, setShowModal }) => {
+  const requestsList = useSelector((state) => state.friends.incFriendRequest);
+  console.log(requestsList);
   return (
     <div>
       {showModal ? (
@@ -22,104 +25,25 @@ const NotificationModal = ({ showModal, setShowModal }) => {
           {/* modal friend list */}
           <div className="friend-list-container">
             <ul>
-              {/* MAP LIST OF FRIEND REQUESTS HERE */}
-              {/* BELOW ARE SAMPLES */}
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
-              <li>
-                {/* friend request icon */}
-                <div className="icon-wrapper"></div>
-                friend request name{" "}
-                <div className="accept-button">
-                  {" "}
-                  <BsIcons.BsCheck />
-                </div>
-                <div className="deny-button">
-                  <AiIcons.AiOutlineCloseCircle />
-                </div>
-              </li>
+              {requestsList.length > 0 ? (
+                requestsList.map((request) => (
+                  <li>
+                    {/* friend request icon */}
+                    <div className="icon-wrapper"></div>
+                    <img src={request.avatarUrl} alt="profile" />
+                    {request.name}
+                    <div className="accept-button">
+                      {" "}
+                      <BsIcons.BsCheck />
+                    </div>
+                    <div className="deny-button">
+                      <AiIcons.AiOutlineCloseCircle />
+                    </div>
+                  </li>
+                ))
+              ) : (
+                <li>No pending requests</li>
+              )}
             </ul>
           </div>
         </div>
