@@ -1,4 +1,4 @@
-import * as types from '../constants/blogs.constants';
+import * as types from "../constants/blogs.constants";
 
 const initialState = {
   blogs: [],
@@ -34,6 +34,12 @@ const blogsReducer = (state = initialState, action) => {
     case types.EDIT_BLOG_SUCCESS:
       return { ...state, loading: false };
     case types.EDIT_BLOG_FAILURE:
+      return { ...state, error: payload, loading: false };
+    case types.DELETE_BLOG_REQUEST:
+      return { ...state, loading: true };
+    case types.DELETE_BLOG_SUCCESS:
+      return { ...state, loading: false };
+    case types.DELETE_BLOG_FAILURE:
       return { ...state, error: payload, loading: false };
     case types.SELECT_SINGLE_BLOG:
       return { ...state, selectedBlog: payload };
