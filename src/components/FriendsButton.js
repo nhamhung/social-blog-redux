@@ -19,7 +19,6 @@ const FriendsButton = () => {
 
   const friendsList = useSelector((state) => state.friends.friendList);
   const loading = useSelector((state) => state.friends.loading);
-  console.log("friendList", friendsList);
 
   useEffect(() => {
     dispatch(FriendsActions.getFriendList());

@@ -10,9 +10,6 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
   const blogList = useSelector((state) => state.blogs.blogs);
   const loading = useSelector((state) => state.blogs.loading);
 
-  console.log("blog list", blogList);
-  console.log(sortOrder);
-
   useEffect(() => {
     if (filterBlogList == null) {
       setFilterBlogList(
@@ -42,7 +39,7 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
   return (
     <div className="blogCardList">
       {!loading ? (
-        filterBlogList.length == 0 ? (
+        filterBlogList.length === 0 ? (
           blogList.map((blog, index) => <BlogCard blog={blog} key={index} />)
         ) : (
           filterBlogList.map((blog, index) => (
