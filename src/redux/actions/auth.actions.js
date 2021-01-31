@@ -73,6 +73,7 @@ const editProfile = (name, image) => async (dispatch) => {
       dispatch({ type: types.EDIT_PROFILE_FAILURE, payload: error });
     });
 };
+
 const authActions = { loginRequest, registerRequest, getUser, editProfile };
 
 export default authActions;
