@@ -26,6 +26,23 @@ const ReactionsReducer = (state = initialState, action) => {
         error: payload,
         sending: false,
       };
+    case types.SEND_REVIEW_REACTIONS_REQUEST:
+      return {
+        ...state,
+        sending: true,
+      };
+    case types.SEND_REVIEW_REACTIONS_SUCCESS:
+      return {
+        ...state,
+        sending: false,
+        response: payload,
+      };
+    case types.SEND_REVIEW_REACTIONS_FAILURE:
+      return {
+        ...state,
+        error: payload,
+        sending: false,
+      };
     default:
       return state;
   }

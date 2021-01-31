@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import { MDBListGroupItem } from 'mdbreact';
 import ReviewIcons from './ReviewIcons';
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, blogId }) => {
+  const [reactions, setReactions] = useState({ ...review.reactions });
+
+  const handleReviewReactions = (newReactions) => {
+    setReactions(newReactions);
+  };
+
   return (
     <div className='reviewCard'>
       <MDBListGroupItem active href='#'>
@@ -18,9 +24,10 @@ const ReviewCard = ({ review }) => {
         </div>
         <p className='mb-1'>posted by {review.user}</p>
         <ReviewIcons
-          reactions={review.reactions}
+          reactions={reactions}
           flag={'Review'}
-          id={review._id}
+          reviewId={review._id}
+          handleReviewReactions={handleReviewReactions}
         />
       </MDBListGroupItem>
     </div>

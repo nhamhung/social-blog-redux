@@ -9,7 +9,7 @@ const ReactionIcons = ({ reactions, flag, id }) => {
   const storeReactions = useSelector((state) => state.reactions.response);
 
   const handleClick = (reaction) => {
-    dispatch(sendReactions(flag, id, reaction));
+    dispatch(sendReactions.sendBlogReactions(flag, id, reaction));
   };
 
   return (
