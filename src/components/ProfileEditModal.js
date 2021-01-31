@@ -10,7 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/auth.actions";
 
-const ProfileEditModal = ({ user }) => {
+const ProfileEditModal = ({ user, isEdited }) => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState(user.name);
   const [image, setImage] = useState(user.avatarUrl);
@@ -22,10 +22,9 @@ const ProfileEditModal = ({ user }) => {
   const handleNameChange = (e) => setName(e.target.value);
   const handleImageChange = (e) => setImage(e.target.value);
   const handleSubmit = (e) => {
-    console.log(name, image);
-
-    // e.preventDefault();
     dispatch(authActions.editProfile(name, image));
+    isEdited();
+    // setModal(!modal);
   };
 
   return (
@@ -52,7 +51,7 @@ const ProfileEditModal = ({ user }) => {
             Cancel
           </MDBBtn>
           <MDBBtn color="primary" onClick={handleSubmit}>
-            Edit blog
+            Edit Profile
           </MDBBtn>
         </MDBModalFooter>
       </MDBModal>
