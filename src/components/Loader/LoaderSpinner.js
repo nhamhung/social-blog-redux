@@ -1,6 +1,4 @@
 import React from "react";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
 import Lottie from "react-lottie";
 import * as loading from "./loading-21-pencil.json";
 
