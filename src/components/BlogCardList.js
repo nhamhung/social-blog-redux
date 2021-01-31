@@ -3,14 +3,12 @@ import BlogCard from './BlogCard';
 import '../css/Blog.css';
 
 import { useSelector } from 'react-redux';
+import LoaderSpinner from './Loader/LoaderSpinner';
 
 const BlogCardList = ({ searchTerm, sortOrder }) => {
   const [filterBlogList, setFilterBlogList] = useState([]);
   const blogList = useSelector((state) => state.blogs.blogs);
   const loading = useSelector((state) => state.blogs.loading);
-
-  console.log('blog list', blogList);
-  console.log(sortOrder);
 
   useEffect(() => {
     setFilterBlogList(
@@ -47,7 +45,7 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
           ))
         )
       ) : (
-        <h1>Loading</h1>
+        <LoaderSpinner />
       )}
     </div>
   );
