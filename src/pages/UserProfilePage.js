@@ -3,6 +3,7 @@ import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileEditModal from "../components/ProfileEditModal";
 import Spinner from "../components/Loader/LoaderSpinner";
+import { Link } from "react-router-dom";
 import {
   MDBContainer,
   MDBRow,
@@ -51,7 +52,9 @@ const UserProfilePage = () => {
                             isEdited={isEdited}
                           />
                         </MDBBtn>
-                        <MDBBtn danger>Delete account</MDBBtn>
+                        <Link to="/user">
+                          <MDBBtn danger>Back To Blogs</MDBBtn>
+                        </Link>
                       </MDBCol>
                     </MDBRow>
                   </MDBCardBody>
