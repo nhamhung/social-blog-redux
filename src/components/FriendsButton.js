@@ -4,11 +4,11 @@ import * as AiIcons from "react-icons/ai";
 import "../css/Buttons.css";
 
 import { Link } from "react-router-dom";
-import SearchUser from "./SearchUser";
 import { useDispatch, useSelector } from "react-redux";
 import FriendsActions from "../redux/actions/friends.actions";
 import Friend from "./Friend";
 import LoaderSpinner from "./Loader/LoaderSpinner";
+import SearchFriend from "./SearchFriend";
 
 const FriendsButton = () => {
   // by default, sidebar is set to false meaning not displaying
@@ -38,15 +38,15 @@ const FriendsButton = () => {
           sidebar ? "right-side-nav-menu active" : "right-side-nav-menu"
         }
       >
+        <div className="right-side-navbar-toggle" onClick={showSidebar}>
+          <Link to="#" className="right-side-menu-bars">
+            <AiIcons.AiOutlineClose />
+          </Link>
+        </div>
+        <SearchFriend />
+
+        {/* ------------- FRIEND LIST ITEMS -------------- */}
         <ul className="right-side-nav-menu-items" onClick={showSidebar}>
-          <li className="right-side-navbar-toggle">
-            <Link to="#" className="right-side-menu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          <li>
-            <SearchUser />
-          </li>
           {/* fetch/map friends list */}
           {!loading ? (
             friendsList.map((friend, index) => (
