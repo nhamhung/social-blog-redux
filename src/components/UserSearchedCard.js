@@ -19,7 +19,6 @@ const UserSearchedCard = ({ user }) => {
   const pendingFriendRequest = useSelector(
     (state) => state.friends.pendingFriendRequest
   );
-  const [test, setTest] = useState();
   const dispatch = useDispatch();
   const cancelFriendRequest = (id) => {
     dispatch(FriendsActions.cancelFriendRequest(id));

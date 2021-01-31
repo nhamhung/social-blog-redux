@@ -15,7 +15,7 @@ import {
 } from "mdbreact";
 import BlogDetail from "./BlogDetail";
 import { SELECT_SINGLE_BLOG } from "../redux/constants/blogs.constants";
-
+import blogsActions from "../redux/actions/blogs.actions";
 
 const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const [review, setReview] = useState("");
@@ -60,6 +60,13 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
         </MDBRow>
         <MDBBtn outline color="default">
           <BlogEditModal blog={blogDetails} />
+        </MDBBtn>
+        <MDBBtn
+          onClick={() => dispatch(blogsActions.deleteBlog(blogDetails._id))}
+          outline
+          color="default"
+        >
+          Delete Blog
         </MDBBtn>
         <MDBBtn color="secondary" onClick={handleToggle}>
           Close
