@@ -22,23 +22,23 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineUserAdd />,
     cName: "nav-text",
   },
-  {
-    title: "Friends",
-    path: "/Friends",
-    icon: <AiIcons.AiOutlineUserAdd />,
-    cName: "nav-text",
-  },
-  {
-    title: "Write Post",
-    path: " ",
-    icon: <AiIcons.AiOutlineUserAdd />,
-    cName: "nav-text",
-  },
+  // {
+  //   title: "Friends",
+  //   path: "/Friends",
+  //   icon: <AiIcons.AiOutlineUserAdd />,
+  //   cName: "nav-text",
+  // },
+  // {
+  //   title: "Write Post",
+  //   path: " ",
+  //   icon: <AiIcons.AiOutlineUserAdd />,
+  //   cName: "nav-text",
+  // },
 
-  {
-    title: "Team",
-    path: "/team",
-    icon: <IoIcons.IoMdPeople />,
-    cName: "nav-text",
-  },
+  // {
+  //   title: "Team",
+  //   path: "/team",
+  //   icon: <IoIcons.IoMdPeople />,
+  //   cName: "nav-text",
+  // },
 ];
