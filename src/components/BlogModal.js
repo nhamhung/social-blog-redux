@@ -57,7 +57,9 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
             Review
           </MDBBtn>
         </MDBRow>
-        <MDBBtn color="default">Edit</MDBBtn>
+        <MDBBtn outline color="default">
+          Edit
+        </MDBBtn>
         <MDBBtn color="secondary" onClick={handleToggle}>
           Close
         </MDBBtn>
