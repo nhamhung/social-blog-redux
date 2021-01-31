@@ -39,6 +39,15 @@ const AuthReducer = (state = initialState, action) => {
     case types.LOGOUT:
       localStorage.removeItem("token");
       return { ...state, isAuthenticated: false };
+    case types.EDIT_PROFILE_REQUEST:
+      return { ...state, loading: true };
+    case types.EDIT_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.EDIT_PROFILE_FAILURE:
+      return { ...state, loading: false, error: payload };
     default:
       return state;
   }
