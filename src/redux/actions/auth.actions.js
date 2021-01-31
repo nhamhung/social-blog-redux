@@ -49,14 +49,30 @@ const getUser = () => async (dispatch) => {
   dispatch({ type: types.GET_USER_REQUEST });
   api
     .get("/users/me")
-    .then((response) =>
-      dispatch({ type: types.GET_USER_SUCCESS, payload: response.data })
-    )
+    .then((response) => {
+      dispatch({ type: types.GET_USER_SUCCESS, payload: response.data });
+    })
     .catch((error) => {
       console.log(error);
       dispatch({ type: types.GET_USER_FAILURE, payload: error });
     });
 };
-const authActions = { loginRequest, registerRequest, getUser };
+
+const editProfile = (name, image) => async (dispatch) => {
+  dispatch({ type: types.EDIT_PROFILE_REQUEST });
+  api
+    .put("/users", { name, avatarUrl: image })
+    .then(function (response) {
+      console.log(response);
+      if (response.data.success)
+        dispatch({
+          type: types.EDIT_PROFILE_SUCCESS,
+        });
+    })
+    .catch(function (error) {
+      dispatch({ type: types.EDIT_PROFILE_FAILURE, payload: error });
+    });
+};
+const authActions = { loginRequest, registerRequest, getUser, editProfile };
 
 export default authActions;
