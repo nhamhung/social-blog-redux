@@ -10,6 +10,7 @@ import FriendsActions from "../redux/actions/friends.actions";
 import { useSelector } from "react-redux";
 import { LOGOUT } from "../redux/constants/auth.constants";
 import SearchUser from "./SearchUser";
+import FriendRequestNotificationIcon from "./Notification/FriendRequestNotificationIcon";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -32,6 +33,7 @@ function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link to="/profile">Profile</Link>
+                <FriendRequestNotificationIcon />
                 <Link to="/" onClick={handleLogout}>
                   Logout
                 </Link>
