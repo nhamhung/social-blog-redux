@@ -40,12 +40,15 @@ function Navbar() {
                 </Link>
                 <FriendRequestNotificationIcon />
                 <Link to="/" onClick={handleLogout}>
-                  Logout
+                  <MDBIcon icon="sign-out-alt" className="pr-2" />
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/login">Login</Link>
+                <Link to="/login">
+                  {" "}
+                  <MDBIcon icon="sign-in-alt" className="pr-2" />
+                </Link>
                 <Link to="/register">Register</Link>
               </>
             )}
