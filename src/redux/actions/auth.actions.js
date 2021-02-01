@@ -24,7 +24,7 @@ const loginRequest = (email, password) => async (dispatch) => {
     )
     .catch((error) => {
       console.log(error);
-      dispatch({ type: types.LOGIN_FAILURE, payload: error });
+      dispatch({ type: types.LOGIN_FAILURE, payload: "Invalid credentials" });
     });
 };
 

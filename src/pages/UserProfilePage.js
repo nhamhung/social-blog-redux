@@ -17,7 +17,7 @@ import {
 const UserProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [edited, setEdited] = useState(false);
-  const isEdited = () => setEdited(true);
+  const isEdited = () => setEdited(!edited);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authActions.getUser());

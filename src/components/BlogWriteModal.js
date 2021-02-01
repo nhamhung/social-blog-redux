@@ -24,8 +24,6 @@ const BlogWriteModal = () => {
   const handleContentChange = (e) => setContent(e.target.value);
   const handleImagesChange = (e) => setImages(e.target.value);
   const handleSubmit = (e) => {
-    console.log(title, content, images);
-    // e.preventDefault();
     dispatch(blogsActions.writeBlog(title, content, images));
   };
 
@@ -35,7 +33,7 @@ const BlogWriteModal = () => {
         <WritePostButton />
       </MDBBtn>
       <MDBModal isOpen={modal} size="lg">
-        <MDBModalHeader>MDBModal title</MDBModalHeader>
+        <MDBModalHeader>Write Your Story</MDBModalHeader>
         <MDBModalBody>
           <h4>Title</h4>
           <textarea
