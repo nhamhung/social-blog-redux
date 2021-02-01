@@ -91,3 +91,35 @@
   width: 100%;
   height: 40px;
 }
+
+/* ========================================================
+                   BLOG MODAL DETAILS
+==========================================================*/
+
+.blog.modal-body {
+  padding: 0;
+}
+
+.modal-blogDetail {
+  /* padding-top: 3rem !important; */
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+.comment-and-counter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.comment-icon-button,
+.reaction-icon-button {
+  margin: 0;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.2);
+}
