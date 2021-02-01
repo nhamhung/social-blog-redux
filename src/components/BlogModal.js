@@ -6,7 +6,6 @@ import BlogEditModal from "./BlogEditModal";
 
 import {
   MDBModal,
-  MDBModalHeader,
   MDBModalFooter,
   MDBBtn,
   MDBModalBody,
@@ -41,8 +40,7 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
 
   return (
     <MDBModal isOpen={modal} toggle={handleToggle} size="lg">
-      <MDBModalHeader></MDBModalHeader>
-      <MDBModalBody>
+      <MDBModalBody className="blog">
         <BlogDetail blogDetails={blogDetails} />
         <ReviewList reviews={reviews} blogId={blogDetails._id} />
       </MDBModalBody>
