@@ -123,6 +123,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.2);
+}
 
 .blog-card-footer {
   display: flex;
