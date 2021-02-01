@@ -15,10 +15,14 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "../redux/actions/auth.actions";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const error = useSelector((state) => state.auth.error);
+
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,11 +33,33 @@ const LoginPage = () => {
     dispatch(authActions.loginRequest(email, password));
   };
   useEffect(() => {
-    console.log(isAuthenticated);
-    isAuthenticated ? history.push("/user") : console.log("");
-  }, [isAuthenticated, history]);
+    console.log("ERROR", error);
+    if (error)
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    if (isAuthenticated) history.push("/user");
+  }, [isAuthenticated, history, error]);
   return (
     <div className="loginPage">
+      <ToastContainer
+        style={{ fontSize: "1.2rem" }}
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6" className="m-auto">
