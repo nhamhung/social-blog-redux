@@ -35,30 +35,41 @@ const BlogCard = ({ blog }) => {
           </MDBView>
         </MDBCol>
         <MDBCol lg="7">
-          <a href="#!" className="green-text">
+          <div className="green-text">
             <h6 className="font-weight-bold mb-3">
-              <MDBIcon icon="utensils" className="pr-2" />
+              <MDBIcon icon="pen" className="pr-2" />
               Blog
             </h6>
-          </a>
+          </div>
           <h3 className="font-weight-bold mb-3 p-0">
             <strong>{blog.title}</strong>
           </h3>
-          <p>{blog.content}</p>
-          <p>
-            by<strong>{blog.author.name}</strong>
+          <p className="blog-content">
+            {blog.content.length > 100
+              ? blog.content.substr(0, 100) + "..."
+              : blog.content}
           </p>
-          <p>
-            <Moment fromNow>{blog.createdAt}</Moment>
-          </p>
-          <MDBBtn
-            color="success"
-            size="md"
-            className="waves-light "
-            onClick={handleToggle}
-          >
-            Read more
-          </MDBBtn>
+          <div className="read-more-button">
+            <MDBBtn
+              color="success"
+              size="md"
+              className="waves-light "
+              onClick={handleToggle}
+            >
+              Read more
+            </MDBBtn>
+          </div>
+
+          <div className="blog-card-footer">
+            <p>
+              <MDBIcon icon="id-badge" className="pr-2" />
+              <strong>{blog.author.name}</strong>
+            </p>
+            <p>
+              <MDBIcon icon="calendar" className="pr-2" />
+              <Moment fromNow>{blog.createdAt}</Moment>
+            </p>
+          </div>
         </MDBCol>
       </MDBRow>
     </div>

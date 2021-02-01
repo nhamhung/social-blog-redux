@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { LOGOUT } from "../redux/constants/auth.constants";
 import SearchUser from "./SearchUser";
 import FriendRequestNotificationIcon from "./Notification/FriendRequestNotificationIcon";
+import { MDBIcon } from "mdbreact";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -29,10 +30,14 @@ function Navbar() {
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
           <div className="nav-links-wrapper">
-            <Link to="/">Home</Link>
+            <Link to="/user">
+              <MDBIcon icon="home" className="pr-2" />
+            </Link>
             {isAuthenticated ? (
               <>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">
+                  <MDBIcon icon="user-alt" className="pr-2" />
+                </Link>
                 <FriendRequestNotificationIcon />
                 <Link to="/" onClick={handleLogout}>
                   Logout
