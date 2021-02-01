@@ -92,7 +92,6 @@
   height: 40px;
 }
 
-
 /* ========================================================
                    BLOG MODAL DETAILS
 ==========================================================*/
@@ -123,11 +122,13 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.2);
+}
 
 .blog-card-footer {
   display: flex;
   margin-top: 60px;
 }
+
 .blog-card-footer p:last-child {
   margin-left: 10px;
 }
