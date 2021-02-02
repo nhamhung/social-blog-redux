@@ -62,7 +62,7 @@ const sendFriendRequest = (id) => async (dispatch) => {
       if (response.data.success)
         dispatch({
           type: types.SEND_FRIEND_REQUEST_SUCCESS,
-          payload: id,
+          payload: { _id: id },
         });
     })
     .catch(function (error) {
@@ -87,6 +87,7 @@ const cancelFriendRequest = (id) => async (dispatch) => {
       dispatch({ type: types.CANCEL_FRIEND_REQUEST_FAILURE, payload: error });
     });
 };
+
 const getFriendRequest = () => async (dispatch) => {
   dispatch({ type: types.GET_FRIEND_REQUEST_REQUEST });
   api
@@ -148,6 +149,22 @@ const deleteFriendRequest = (id) => async (dispatch) => {
       dispatch({ type: types.DELETE_FRIEND_REQUEST_FAILURE, payload: error });
     });
 };
+
+const removeFriend = (id) => async (dispatch) => {
+  dispatch({ type: types.REMOVE_FRIEND_REQUEST });
+  api
+    .delete(`/friends/${id}`)
+    .then(function (response) {
+      if (response.data.success)
+        dispatch({
+          type: types.REMOVE_FRIEND_SUCCESS,
+          payload: id,
+        });
+    })
+    .catch(function (error) {
+      dispatch({ type: types.REMOVE_FRIEND_FAILURE, payload: error });
+    });
+};
 const FriendsActions = {
   getFriendList,
   searchUser,
@@ -158,6 +175,7 @@ const FriendsActions = {
   getIncomingFriendRequest,
   acceptFriendRequest,
   deleteFriendRequest,
+  removeFriend,
 };
 
 export default FriendsActions;

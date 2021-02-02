@@ -5,6 +5,7 @@ const initialState = {
   userSearched: [],
   friendSearched: [],
   pendingFriendRequest: [],
+  pendingFriendRequest2: [],
   incFriendRequest: [],
   loading: false,
   error: null,
@@ -48,7 +49,7 @@ const FriendsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        // pendingFriendRequest: [...state.pendingFriendRequest, payload],
+        pendingFriendRequest: [...state.pendingFriendRequest, payload],
       };
     case types.SEND_FRIEND_REQUEST_FAILURE:
       return { ...state, error: payload, loading: false };
@@ -58,9 +59,9 @@ const FriendsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        // pendingFriendRequest: state.pendingFriendRequest.filter(
-        //   (id) => id._id !== payload
-        // ),
+        pendingFriendRequest: state.pendingFriendRequest.filter(
+          (id) => id._id !== payload
+        ),
       };
     case types.CANCEL_FRIEND_REQUEST_FAILURE:
       return { ...state, error: payload, loading: false };
@@ -91,6 +92,16 @@ const FriendsReducer = (state = initialState, action) => {
         loading: false,
       };
     case types.DELETE_FRIEND_REQUEST_FAILURE:
+      return { ...state, error: payload, loading: false };
+    case types.REMOVE_FRIEND_REQUEST:
+      return { ...state, loading: true };
+    case types.REMOVE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        friendList: state.friendList.filter((id) => id._id !== payload),
+      };
+    case types.REMOVE_FRIEND_FAILURE:
       return { ...state, error: payload, loading: false };
     default:
       return state;

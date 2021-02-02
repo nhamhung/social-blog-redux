@@ -8,10 +8,13 @@ import LoaderSpinner from "../components/Loader/LoaderSpinner";
 const UserSearchListPage = () => {
   const dispatch = useDispatch();
   const searchedUsers = useSelector((state) => state.friends.userSearched);
+
   useEffect(() => {
     dispatch(FriendsActions.getFriendRequest());
   }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(FriendsActions.getFriendList());
+  }, [dispatch]);
   return (
     <MDBContainer>
       <MDBRow center>

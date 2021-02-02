@@ -19,6 +19,7 @@ const UserSearchedCard = ({ user }) => {
   const pendingFriendRequest = useSelector(
     (state) => state.friends.pendingFriendRequest
   );
+  const friendList = useSelector((state) => state.friends.friendList);
   const dispatch = useDispatch();
   const cancelFriendRequest = (id) => {
     dispatch(FriendsActions.cancelFriendRequest(id));
@@ -26,9 +27,25 @@ const UserSearchedCard = ({ user }) => {
   const sendFriendRequest = (id) => {
     dispatch(FriendsActions.sendFriendRequest(id));
   };
-  useEffect(() => {
-    dispatch(FriendsActions.getFriendRequest());
-  }, [dispatch]);
+  const removeFriend = (id) => {
+    dispatch(FriendsActions.removeFriend(id));
+  };
+  // useEffect(() => {
+  //   dispatch(FriendsActions.getFriendRequest());
+  // }, [dispatch]);
+  const getStatusFriendRequest = (id) => {
+    console.log(
+      id,
+      friendList,
+      friendList.filter((friend) => friend._id === id).length
+    );
+
+    if (friendList.filter((friend) => friend._id === id).length > 0)
+      return "friend";
+    if (pendingFriendRequest.filter((fr) => fr._id === id).length > 0)
+      return "pending";
+    else return "not";
+  };
   return (
     <MDBCol md="4">
       <MDBCard wide cascade>
@@ -45,19 +62,27 @@ const UserSearchedCard = ({ user }) => {
         <MDBCardBody cascade className="text-center">
           <MDBCardTitle className="card-title">
             <strong>{user.name}</strong>
+            {console.log("call", getStatusFriendRequest(user._id))}
           </MDBCardTitle>
-          {pendingFriendRequest.filter((el) => el._id === user._id).length >
-          0 ? (
+          {getStatusFriendRequest(user._id) === "pending" ? (
             <MDBBtn onClick={() => cancelFriendRequest(user._id)}>
               Cancel friend request
             </MDBBtn>
-          ) : (
+          ) : getStatusFriendRequest(user._id) === "not" ? (
             <MDBBtn
               onClick={() => {
                 sendFriendRequest(user._id);
               }}
             >
               Add friend
+            </MDBBtn>
+          ) : (
+            <MDBBtn
+              onClick={() => {
+                removeFriend(user._id);
+              }}
+            >
+              Remove friend
             </MDBBtn>
           )}
 
