@@ -11,6 +11,7 @@ const SearchUser = () => {
     if (e.key === "Enter" && e.target.value) {
       dispatch(FriendsActions.searchUser(searchTerm));
       history.push("/search");
+      e.target.value = "";
     }
   };
   const dispatch = useDispatch();

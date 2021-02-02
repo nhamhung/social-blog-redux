@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import FriendsActions from "../redux/actions/friends.actions";
 import "../css/SearchInput.css";
 import * as faIcons from "react-icons/fa";
@@ -8,8 +7,6 @@ import * as faIcons from "react-icons/fa";
 const SearchFriend = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const friendSearch = useSelector((state) => state.friends.friendSearched);
-
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     if (e.key === "Enter" && e.target.value) {

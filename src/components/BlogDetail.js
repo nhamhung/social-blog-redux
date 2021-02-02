@@ -7,7 +7,6 @@ import {
   MDBCardBody,
   MDBMask,
   MDBView,
-  MDBBtn,
   MDBIcon,
 } from "mdbreact";
 import Moment from "react-moment";
