@@ -3,6 +3,8 @@ import UserSearchedCard from "../components/UserSearchedCard";
 import { MDBContainer, MDBRow } from "mdbreact";
 import { useSelector, useDispatch } from "react-redux";
 import FriendsActions from "../redux/actions/friends.actions";
+import authActions from "../redux/actions/auth.actions";
+
 import LoaderSpinner from "../components/Loader/LoaderSpinner";
 
 const UserSearchListPage = () => {
@@ -14,6 +16,9 @@ const UserSearchListPage = () => {
   }, [dispatch]);
   useEffect(() => {
     dispatch(FriendsActions.getFriendList());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(authActions.getUser());
   }, [dispatch]);
   return (
     <MDBContainer>
