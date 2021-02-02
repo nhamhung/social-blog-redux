@@ -16,7 +16,7 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
         x.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-  }, [searchTerm]);
+  }, [searchTerm, blogList]);
 
   useEffect(() => {
     if (sortOrder === "newest") {
@@ -32,7 +32,7 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
         ),
       ]);
     }
-  }, [sortOrder]);
+  }, [sortOrder, blogList]);
 
   return (
     <div className="blogCardList">

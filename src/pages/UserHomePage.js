@@ -6,10 +6,7 @@ import SearchBar from "../components/SearchBar";
 import Sort from "../components/Sort";
 import { MDBContainer, MDBRow } from "mdbreact";
 import FriendsButton from "../components/FriendsButton";
-import WritePostButton from "../components/WritePostButton";
-import authActions from "../redux/actions/auth.actions";
 import FriendsActions from "../redux/actions/friends.actions";
-
 import "../css/Navbar.css";
 import BlogWriteModal from "../components/BlogWriteModal";
 

@@ -22,10 +22,10 @@ const BlogModal = ({ modal, handleToggle, blogDetails }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (modal) dispatch(ReviewsActions.getReviews(blogDetails._id));
-  }, [dispatch, modal]);
+  }, [dispatch, modal, blogDetails._id]);
   useEffect(() => {
     if (modal) dispatch({ type: SELECT_SINGLE_BLOG, payload: blogDetails._id });
-  }, [dispatch, modal]);
+  }, [dispatch, modal, blogDetails._id]);
   const reviews = useSelector((state) => state.reviews.reviews);
 
   const handleReview = (e) => {
