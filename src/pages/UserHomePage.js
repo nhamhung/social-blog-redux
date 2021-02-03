@@ -30,6 +30,8 @@ const UserHomePage = () => {
   const handleSort = (order) => {
     setSortOrder(order);
   };
+  const handlePagination = (data) =>
+    dispatch(BlogsActions.BlogsData(data.selected + 1));
 
   return (
     <MDBContainer>
@@ -37,7 +39,11 @@ const UserHomePage = () => {
         <SearchBar handleSearch={handleSearch} />
         <Sort handleSort={handleSort} />
       </MDBRow>
-      <BlogCardList searchTerm={searchTerm} sortOrder={sortOrder} />
+      <BlogCardList
+        searchTerm={searchTerm}
+        sortOrder={sortOrder}
+        handlePagination={handlePagination}
+      />
       <FriendsButton />
       <BlogWriteModal />
     </MDBContainer>

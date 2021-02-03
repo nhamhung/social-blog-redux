@@ -1,8 +1,11 @@
 import * as types from "../constants/blogs.constants";
 import api from "../../apiService";
 
-const BlogsData = () => async (dispatch) => {
-  const query = `?page=1&limit=20&sortBy[createdAt]=1`;
+const BlogsData = (page) => async (dispatch) => {
+  console.log("PAGE number", page);
+  const query = page
+    ? `?page=${page}&limit=20&sortBy[createdAt]=1`
+    : `?page=1&limit=20&sortBy[createdAt]=1`;
   dispatch({ type: types.GET_BLOGS_DATA_REQUEST });
   api
     .get(`/blogs${query}`)
@@ -11,7 +14,10 @@ const BlogsData = () => async (dispatch) => {
       if (response.data && response.data.data.blogs)
         dispatch({
           type: types.GET_BLOGS_DATA_SUCCESS,
-          payload: response.data.data.blogs,
+          payload: {
+            blogs: response.data.data.blogs,
+            pageCount: response.data.data.totalPages,
+          },
         });
     })
     .catch(function (error) {

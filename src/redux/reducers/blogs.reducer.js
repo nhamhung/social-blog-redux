@@ -3,6 +3,7 @@ import * as types from "../constants/blogs.constants";
 const initialState = {
   blogs: [],
   currBlog: {},
+  pageCount: 0,
   loading: false,
   error: null,
   selectedBlog: [],
@@ -14,13 +15,22 @@ const blogsReducer = (state = initialState, action) => {
     case types.GET_BLOGS_DATA_REQUEST:
       return { ...state, loading: true };
     case types.GET_BLOGS_DATA_SUCCESS:
-      return { ...state, blogs: payload, loading: false };
+      return {
+        ...state,
+        blogs: payload.blogs,
+        pageCount: payload.pageCount,
+        loading: false,
+      };
     case types.GET_BLOGS_DATA_FAILURE:
       return { ...state, error: payload, loading: false };
     case types.GET_A_BLOG_REQUEST:
       return { ...state, loading: true };
     case types.GET_A_BLOG_SUCCESS:
-      return { ...state, currBlog: payload, loading: false };
+      return {
+        ...state,
+        currBlog: payload,
+        loading: false,
+      };
     case types.GET_A_BLOG_FAILURE:
       return { ...state, error: payload, loading: false };
     case types.WRITE_BLOG_REQUEST:
