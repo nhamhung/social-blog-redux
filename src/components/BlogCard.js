@@ -11,24 +11,17 @@ const BlogCard = ({ blog }) => {
     setModal(!modal);
     console.log(modal);
   };
-
+  const setBlogImage = (images) =>
+    images && images[0] && images[0].match(img_url_regex)
+      ? images[images.length - 1]
+      : "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg";
   return (
     <div className="blogCard">
       <BlogModal modal={modal} handleToggle={handleToggle} blogDetails={blog} />
       <MDBRow>
         <MDBCol lg="5">
           <MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
-            <img
-              className="img-fluid"
-              src={
-                blog.images &&
-                blog.images[0] &&
-                blog.images[0].match(img_url_regex)
-                  ? blog.images[blog.images.length - 1]
-                  : "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-              }
-              alt=""
-            />
+            <img className="img-fluid" src={setBlogImage(blog.images)} alt="" />
             <a href="#!">
               <MDBMask overlay="white-slight" />
             </a>
