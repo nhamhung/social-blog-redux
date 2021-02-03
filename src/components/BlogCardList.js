@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard";
 import "../css/Blog.css";
-
+import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import LoaderSpinner from "./Loader/LoaderSpinner";
+import "../css/Pagination.css";
 
-const BlogCardList = ({ searchTerm, sortOrder }) => {
+const BlogCardList = ({ searchTerm, sortOrder, handlePagination }) => {
   const [filterBlogList, setFilterBlogList] = useState([]);
   const blogList = useSelector((state) => state.blogs.blogs);
+  const pageCount = useSelector((state) => state.blogs.pageCount);
   const loading = useSelector((state) => state.blogs.loading);
-
   useEffect(() => {
     setFilterBlogList(
       blogList.filter((x) =>
@@ -35,19 +36,36 @@ const BlogCardList = ({ searchTerm, sortOrder }) => {
   }, [sortOrder, blogList]);
 
   return (
-    <div className="blogCardList">
-      {!loading ? (
-        filterBlogList.length === 0 ? (
-          blogList.map((blog, index) => <BlogCard blog={blog} key={index} />)
+    <>
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePagination}
+        containerClassName={"pagination"}
+        previousLinkClassName={"pagination__link"}
+        nextLinkClassName={"pagination__link"}
+        disabledClassName={"pagination__link--disabled"}
+        activeClassName={"pagination__link--active"}
+      />
+      <div className="blogCardList">
+        {!loading ? (
+          filterBlogList.length === 0 ? (
+            blogList.map((blog, index) => <BlogCard blog={blog} key={index} />)
+          ) : (
+            filterBlogList.map((blog, index) => (
+              <BlogCard blog={blog} key={index} />
+            ))
+          )
         ) : (
-          filterBlogList.map((blog, index) => (
-            <BlogCard blog={blog} key={index} />
-          ))
-        )
-      ) : (
-        <LoaderSpinner />
-      )}
-    </div>
+          <LoaderSpinner />
+        )}
+      </div>
+    </>
   );
 };
 
