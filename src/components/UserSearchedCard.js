@@ -2,17 +2,8 @@
 
 import React from "react";
 import FriendsActions from "../redux/actions/friends.actions";
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCol,
-  MDBView,
-  MDBIcon,
-} from "mdbreact";
+import { MDBBtn } from "mdbreact";
+import "../css/UserSearchedCard.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -33,6 +24,8 @@ const UserSearchedCard = ({ user }) => {
   const removeFriend = (id) => {
     dispatch(FriendsActions.removeFriend(id));
   };
+  const isFriend = (id) =>
+    friendList.find((friend) => friend._id === id) ? "friend" : "";
 
   //Get the relationship with the user searched (friend, pending, not friend and the user himself)
   const getStatusFriendRequest = (id) => {
@@ -84,39 +77,24 @@ const UserSearchedCard = ({ user }) => {
   };
 
   return (
-    <MDBCol md="4">
-      <MDBCard wide cascade>
-        <MDBView cascade>
-          <MDBCardImage
-            hover
-            overlay="white-slight"
-            className="card-img-top"
-            src={user.avatarUrl}
-            alt="Card cap"
-          />
-        </MDBView>
-        <MDBCardBody cascade className="text-center">
-          <MDBCardTitle className="card-title">
-            <strong>{user.name}</strong>
-          </MDBCardTitle>
-          <MDBCardText>Sed ut perspiciatis unde omnis.</MDBCardText>
-          {renderButtons(user._id)}
-          <MDBCol md="12" className="d-flex justify-content-center">
-            <a href="!#" className="px-2 fa-lg li-ic">
-              <MDBIcon fab icon="linkedin-in"></MDBIcon>
-            </a>
-
-            <a href="!#" className="px-2 fa-lg tw-ic">
-              <MDBIcon fab icon="twitter"></MDBIcon>
-            </a>
-
-            <a href="!#" className="px-2 fa-lg fb-ic">
-              <MDBIcon fab icon="facebook-f"></MDBIcon>
-            </a>
-          </MDBCol>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBCol>
+    <div className="userCardContainer">
+      <div className="userCardImage">
+        <img
+          src={
+            user.avatarUrl.length > 0
+              ? user.avatarUrl
+              : "https://starcresources.com.au/wp-content/uploads/2018/08/dummy450x450.jpg"
+          }
+          alt=""
+          srcset=""
+        />
+      </div>
+      <div className="userCardContent">
+        <strong>{user.name}</strong>
+        {isFriend(user._id)}
+      </div>
+      <div className="userCardButtons">{renderButtons(user._id)}</div>
+    </div>
   );
 };
 

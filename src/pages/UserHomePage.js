@@ -9,6 +9,7 @@ import FriendsButton from "../components/FriendsButton";
 import FriendsActions from "../redux/actions/friends.actions";
 import "../css/Navbar.css";
 import BlogWriteModal from "../components/BlogWriteModal";
+import authActions from "../redux/actions/auth.actions";
 
 const UserHomePage = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ const UserHomePage = () => {
   useEffect(() => {
     dispatch(FriendsActions.getIncomingFriendRequest());
   }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(authActions.getUser());
+  }, [dispatch]);
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
